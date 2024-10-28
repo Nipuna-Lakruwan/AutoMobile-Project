@@ -27,7 +27,11 @@
       <?php include 'includes/navbar.php'; ?>
 
       <main>
-      <?php include 'includes/header.php'; ?>
+        <div class="header">
+          <div class="left">
+            <h1>Bookings</h1>
+          </div>
+        </div>
 
         <div class="container">
           <div class="toolbar">
