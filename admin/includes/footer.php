@@ -8,6 +8,12 @@
 </div>
 
 <style>
+
+html, body {
+    height: 100%; /* Full height */
+    margin: 0; /* Remove default margin */
+}
+
 .footer body {
     background-color: #121212; /* Dark background for the whole page */
     color: #ffffff; /* Light text color for the body */
