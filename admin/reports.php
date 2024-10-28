@@ -23,138 +23,71 @@
     <!-- Main Content -->
     <div class="content">
       <!-- Navbar -->
-      <nav>
-        <i class='bx bx-menu'></i>
-        <form action="#">
-          <div class="form-input">
-            <input type="search" placeholder="Search...">
-            <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
-          </div>
-        </form>
-        <input type="checkbox" id="theme-toggle" hidden>
-        <label for="theme-toggle" class="theme-toggle"></label>
-        <a href="#" class="notif">
-          <i class='bx bx-bell'></i>
-          <span class="count">12</span>
-        </a>
-        <!--<a href="#" class="profile">
-                        <img src="images/profile.JPG">
-                    </a> -->
-        <div class="profile-dropdown">
-          <div onclick="toggle()" class="profile-dropdown-btn">
-            <div class="profile-img">
-              <i class="fa-solid fa-circle"></i>
-            </div>
-
-            <span>Nipuna
-              <i class="fa-solid fa-angle-down"></i>
-            </span>
-          </div>
-
-          <ul class="profile-dropdown-list">
-            <li class="profile-dropdown-list-item">
-              <a href="profile.html">
-                <i class="fa-regular fa-user"></i>
-                Edit Profile
-              </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-regular fa-envelope"></i>
-                Inbox
-              </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-solid fa-chart-line"></i>
-                Analytics
-              </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-solid fa-sliders"></i>
-                Settings
-              </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-regular fa-circle-question"></i>
-                Help & Support
-              </a>
-            </li>
-            <hr />
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                Log out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <!-- End of Navbar -->
+      <?php include 'includes/navbar.php'; ?>
 
       <main>
-
-
         <div class="container">
-          <h2>Reports</h2>
+          <h2>Reports Management</h2>
           <div class="toolbar">
-            <input type="text" id="searchBox" placeholder="search..." />
+            <input type="text" id="searchBox" placeholder="Search Reports..." />
             <button id="newMeetingBtn">+ New Report</button>
           </div>
+
           <div class="filters">
-            <input type="text" placeholder="Meeting Type Name" />
+            <input type="text" placeholder="Report Title" />
             <input type="date" id="startDate" />
             <span>-</span>
             <input type="date" id="endDate" />
-            <select id="department">
-              <option value="" disabled selected>Department</option>
-              <option value="IT">IT</option>
-              <option value="HR">HR</option>
-              <!-- Add more options as needed -->
+            <select id="serviceType">
+              <option value="" disabled selected>Service Type</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Repair">Repair</option>
+              <option value="Inspection">Inspection</option>
+              <!-- Add more service options as needed -->
             </select>
-            <input type="text" placeholder="Location Name" />
-            <select id="organizedBy">
-              <option value="" disabled selected>Organized By</option>
+            <input type="text" placeholder="Garage Location" />
+            <select id="createdBy">
+              <option value="" disabled selected>Created By</option>
               <option value="John Doe">John Doe</option>
               <option value="Jane Smith">Jane Smith</option>
               <!-- Add more options as needed -->
             </select>
-            <select id="reporter">
-              <option value="" disabled selected>Reporter</option>
-              <option value="Reporter 1">Reporter 1</option>
-              <option value="Reporter 2">Reporter 2</option>
+            <select id="verifiedBy">
+              <option value="" disabled selected>Verified By</option>
+              <option value="Supervisor 1">Supervisor 1</option>
+              <option value="Supervisor 2">Supervisor 2</option>
               <!-- Add more options as needed -->
             </select>
           </div>
+
           <table id="meetingsTable">
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Meeting Name</th>
-                <th>Meeting Type Name</th>
+                <th>Report Title</th>
+                <th>Service Type</th>
                 <th>Start Date</th>
                 <th>End Date</th>
-                <th>Department</th>
-                <th>Location Name</th>
-                <th>Organized By</th>
-                <th>Reporter</th>
+                <th>Location</th>
+                <th>Created By</th>
+                <th>Verified By</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-
+                <td>1</td>
+                <td>Vehicle Maintenance Report</td>
+                <td>Maintenance</td>
+                <td>2022-01-01</td>
+                <td>2022-01-01</td>
+                <td>Garage 1</td>
+                <td>John Doe</td>
+                <td>Supervisor 1</td>
               </tr>
               <!-- Add more rows as needed -->
             </tbody>
           </table>
+        </div>
           <div class="pagination">
             <span>Showing 1 to 1 of 1 total records</span>
             <select id="rowsPerPage">
@@ -174,7 +107,7 @@
   <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
 
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
-  <script src="/AutoMobile Project/admin/assets/js/meeting.js"></script>
+  <script src="/AutoMobile Project/admin/assets/js/reports.js"></script>
 </body>
 
 </html>
