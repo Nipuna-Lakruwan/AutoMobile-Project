@@ -23,86 +23,9 @@
     <!-- Main Content -->
     <div class="content">
       <!-- Navbar -->
-      <nav>
-        <i class='bx bx-menu'></i>
-        <form action="#">
-          <div class="form-input">
-            <input type="search" placeholder="Search...">
-            <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
-          </div>
-        </form>
-        <input type="checkbox" id="theme-toggle" hidden>
-        <label for="theme-toggle" class="theme-toggle"></label>
-        <a href="#" class="notif">
-          <i class='bx bx-bell'></i>
-          <span class="count">12</span>
-        </a>
-        <!--<a href="#" class="profile">
-                        <img src="images/profile.JPG">
-                    </a> -->
-        <div class="profile-dropdown">
-          <div onclick="toggle()" class="profile-dropdown-btn">
-            <div class="profile-img">
-              <i class="fa-solid fa-circle"></i>
-            </div>
-
-            <span>Nipuna
-              <i class="fa-solid fa-angle-down"></i>
-            </span>
-          </div>
-
-          <ul class="profile-dropdown-list">
-            <li class="profile-dropdown-list-item">
-              <a href="profile.html">
-                <i class="fa-regular fa-user"></i>
-                Edit Profile
-              </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-regular fa-envelope"></i>
-                Inbox
-              </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-solid fa-chart-line"></i>
-                Analytics
-              </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-solid fa-sliders"></i>
-                Settings
-              </a>
-            </li>
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-regular fa-circle-question"></i>
-                Help & Support
-              </a>
-            </li>
-            <hr />
-
-            <li class="profile-dropdown-list-item">
-              <a href="#">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                Log out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <!-- End of Navbar -->
+      <?php include 'includes/navbar.php'; ?>
 
       <main>
-
-
         <div class="container">
           <h2>Sales</h2>
           <div class="toolbar">
@@ -110,71 +33,93 @@
             <button id="newMeetingBtn">+ New Sale</button>
           </div>
           <div class="filters">
-            <input type="text" placeholder="Meeting Type Name" />
+            <!-- <input type="text" placeholder="" /> -->
             <input type="date" id="startDate" />
-            <span>-</span>
+            <!-- <span>-</span> -->
             <input type="date" id="endDate" />
             <select id="department">
-              <option value="" disabled selected>Department</option>
-              <option value="IT">IT</option>
-              <option value="HR">HR</option>
-              <!-- Add more options as needed -->
+              <option value="" disabled selected>Type</option>
+              <option value="IT">Car Wash</option>
+              <option value="HR">Service</option>
             </select>
-            <input type="text" placeholder="Location Name" />
             <select id="organizedBy">
-              <option value="" disabled selected>Organized By</option>
+              <option value="" disabled selected>Mechanic</option>
               <option value="John Doe">John Doe</option>
               <option value="Jane Smith">Jane Smith</option>
               <!-- Add more options as needed -->
             </select>
-            <select id="reporter">
+            <!-- <select id="reporter">
               <option value="" disabled selected>Reporter</option>
               <option value="Reporter 1">Reporter 1</option>
               <option value="Reporter 2">Reporter 2</option>
-              <!-- Add more options as needed -->
-            </select>
+            </select> -->
           </div>
           <table id="meetingsTable">
             <thead>
               <tr>
+              <tr>
                 <th>ID</th>
-                <th>Meeting Name</th>
-                <th>Meeting Type Name</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Department</th>
-                <th>Location Name</th>
-                <th>Organized By</th>
-                <th>Reporter</th>
+                <th>Vehicle Registration</th>
+                <th>Customer Name</th>
+                <th>Service Type</th>
+                <th>Service Date</th>
+                <th>Cost</th>
+                <th>Status</th>
+                <th>Mechanic Assigned</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-
+                <td>1</td>
+                <td>ABC 123</td>
+                <td>John Doe</td>
+                <td>Car Wash</td>
+                <td>2024-01-01</td>
+                <td>Rs. 5000</td>
+                <td>Completed</td>
+                <td>John Doe</td>
+                <td>
+                  <button class="editBtn">Edit</button>
+                  <button class="deleteBtn">Delete</button>
+                </td>
               </tr>
-              <!-- Add more rows as needed -->
+              <tr>
+                <td>2</td>
+                <td>XYZ 456</td>
+                <td>Jane Smith</td>
+                <td>Service</td>
+                <td>2024-01-02</td>
+                <td>Rs. 10000</td>
+                <td>Pending</td>
+                <td>Jane Smith</td>
+                <td>
+                  <button class="editBtn">Edit</button>
+                  <button class="deleteBtn">Delete</button>
+                </td>
+              </tr>
             </tbody>
           </table>
-          <div class="pagination">
-            <span>Showing 1 to 1 of 1 total records</span>
-            <select id="rowsPerPage">
-              <option value="100">100</option>
-              <!-- Add more options as needed -->
-            </select>
-            <div class="pagination-controls">
-              <button>&laquo;</button>
-              <button>1</button>
-              <button>&raquo;</button>
-            </div>
+        </div>
+        <div class="pagination">
+          <span>Showing 1 to 1 of 1 total records</span>
+          <select id="rowsPerPage">
+            <option value="100">100</option>
+            <!-- Add more options as needed -->
+          </select>
+          <div class="pagination-controls">
+            <button>&laquo;</button>
+            <button>1</button>
+            <button>&raquo;</button>
           </div>
         </div>
-      </main>
     </div>
+    </main>
   </div>
   <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
-  
+
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
-  <script src="/AutoMobile Project/admin/assets/js/meeting.js"></script>
+  <script src="/AutoMobile Project/admin/assets/js/sales.js"></script>
 </body>
 
 </html>
