@@ -123,18 +123,27 @@ h2 {
 
 #exportBtn,
 #pdfBtn {
-  padding: 8px 16px;
+  padding: 4px 8px; /* Smaller padding for smaller buttons */
   border: none;
   border-radius: 5px;
   background-color: darkred; /* Dark background for export buttons */
   color: #e0e0e0; /* Light text color for buttons */
   cursor: pointer;
   margin: 0 5px;
+  display: inline-block; /* Align buttons next to each other */
+  font-size: 14px; /* Optional: adjust font size for better appearance */
 }
 
 #exportBtn:hover,
 #pdfBtn:hover {
   background-color: #333; /* Slightly lighter background on hover */
+}
+
+/* Optional: Container for buttons to align them */
+.button-container {
+  display: flex; /* Use flexbox for better alignment */
+  justify-content: flex-start; /* Align buttons to the left */
+  margin-bottom: 10px; /* Optional: space below buttons */
 }
 
 #totalAmount {
