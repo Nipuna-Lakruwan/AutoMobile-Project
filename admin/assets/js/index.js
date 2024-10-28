@@ -45,20 +45,38 @@ window.addEventListener('resize', () => {
     }
 });
 
-/*
+// Theme toggle
 const toggler = document.getElementById('theme-toggle');
 
+// Function to apply the theme based on localStorage
+function applyTheme() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+        document.body.classList.add('dark');
+        toggler.checked = true; // Set the toggle to checked
+    } else {
+        document.body.classList.remove('dark');
+        toggler.checked = false; // Set the toggle to unchecked
+    }
+}
+
+// Apply the theme on page load
+applyTheme();
+
+// Update the theme and save preference to localStorage on toggle change
 toggler.addEventListener('change', function () {
     if (this.checked) {
         document.body.classList.add('dark');
+        localStorage.setItem('theme', 'dark'); // Save preference
     } else {
         document.body.classList.remove('dark');
+        localStorage.setItem('theme', 'light'); // Save preference
     }
 });
-*/
+
 
 // Always apply the dark theme
-document.body.classList.add('dark');
+//document.body.classList.add('dark');
 
 let profileDropdownList = document.querySelector(".profile-dropdown-list");
 let btn = document.querySelector(".profile-dropdown-btn");
