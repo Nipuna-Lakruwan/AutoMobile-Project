@@ -152,6 +152,7 @@
       </div>
     </div>
   </div>
+  <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
 
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
   <script src="/AutoMobile Project/admin/assets/js/inventory.js"></script>
