@@ -1,11 +1,8 @@
 <ul class="side-menu">
   <li class="active"><a href="../pages/dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-  <li><a href="../pages/meeting.html"><i class='bx bx-message-square-dots'></i>Meeting</a></li>
   <li><a href="../pages/vehicles.html"><i class='bx bx-car' ></i>Vehicles</a></li>
   <li><a href="../pages/bookings.html"><i class='bx bx-calendar'></i>Bookings</a></li>
   <li><a href="../pages/inspections.html"><i class='bx bxs-car-mechanic'></i>Inspections</a></li>
-  <li><a href="../pages/jobCard.html"><i class='bx bx-credit-card-front' ></i>Job Cards</a></li>
-  <li><a href="../pages/businessPartner.html"><i class='bx bx-id-card' ></i>Business Partners</a></li>
   <li><a href="../pages/inventory.html"><i class='bx bx-basket' ></i>Inventory</a></li>
   <li><a href="../pages/invoices.html"><i class='bx bxs-report' ></i>Invoices</a></li>
   <li><a href="../pages/quotation.html"><i class='bx bx-checkbox-checked' ></i>Quotations</a></li>
