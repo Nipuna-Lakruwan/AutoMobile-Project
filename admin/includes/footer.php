@@ -20,7 +20,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 70vh; /* Take full viewport height */
+    min-height: 80vh; /* Take full viewport height */
 }
 
 .content {
