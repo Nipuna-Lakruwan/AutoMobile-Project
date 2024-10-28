@@ -67,6 +67,7 @@
             <!-- Rows will be dynamically generated here -->
           </tbody>
         </table>
+      </div>
 
         <div class="pagination">
           <span>Showing 1 to 10 of 50 entries</span>
@@ -82,7 +83,7 @@
         </div>
       </div>
     </div>
-  </div><br><br><br><br><br>
+  </div><br>
 
   <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
 
