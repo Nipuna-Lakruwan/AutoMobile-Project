@@ -40,6 +40,8 @@
     </div>
   </div>
   <!-- End of Wrapper -->
+  
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
   <script src="/AutoMobile Project/admin/assets/js/chart.js"></script>
