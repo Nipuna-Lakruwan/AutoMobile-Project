@@ -219,14 +219,11 @@
               <button>&raquo;</button>
             </div>
           </div>
-          <div class="footer">
-            Copyright &copy; 2024. All rights reserved.
-            Nipuna Lakruwan
-          </div>
         </div>
       </main>
     </div>
   </div>
+  <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
   
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
   <script src="/AutoMobile Project/admin/assets/js/meeting.js"></script>
