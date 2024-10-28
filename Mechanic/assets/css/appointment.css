@@ -1,0 +1,399 @@
+body {
+  color: #e0e0e0; /* Light text color for readability */
+  margin: 0; /* Remove default margin */
+}
+
+.sidebar-nav .sidebar-item:nth-child(3) .sidebar-link {
+  border-bottom: 2px solid #DC3216; /* Adjust the thickness and color */
+}
+
+.container {
+  max-width: 85%; /* Adjust as needed to fit the content */
+  color: #ffffff; /* Light text color for readability */
+  margin: auto; /* Center the container horizontally */
+  margin-top: 5.3%;
+  margin-left: 1.8%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+  text-align: center; /* Center all text and inline elements within the container */
+  background: rgba(59, 59, 59, 0.68); /* Dark background for the container */
+  backdrop-filter: blur(7.9px);
+  position: relative; /* Ensure container is positioned correctly above SVG */
+  z-index: 1; /* Ensure container is above SVG */
+}
+
+h2 {
+  color: #ffffff;
+  margin: 40px 20px 20px 80px; /* Adjust the margins as needed */
+  text-align: left; /* Aligns the header to the left */
+  position: relative; /* Allows for positioning adjustments */
+  top: 10px; /* Move the header down */
+  left: 1%; /* Move the header to the right */
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#appointmentTable {
+  width: 80%; /* Adjust the width as needed */
+  margin: 40px auto 0 auto; /* Add margin to move the table down and center it horizontally */
+  border-collapse: separate; /* Use separate borders for spacing between rows */
+  border-spacing: 0 10px; /* Add space between rows */
+}
+
+/* Style for the footer line and buttons */
+.appointment-table-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px; /* Space between the table and the footer */
+}
+
+.footer-line {
+  border: 0;
+  border-top: 2px solid #ffffff; /* White horizontal line */
+  width: 80%; /* Adjust the length of the line here */
+  margin: 0 auto 20px auto; /* Center the line and add space below */
+}
+
+/* Container for buttons */
+.appointment-button-container {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  gap: 50px; /* Increase the gap to add more space between buttons */
+  margin: 20px auto; /* Space above and below the buttons, center container horizontally */
+  position: relative; /* Allows for relative positioning of the container */
+  left: 450px; /* Move the container slightly to the right */
+}
+
+/* Style for the button wrapper to create shadow effect */
+.appointment-button-wrapper {
+  position: relative;
+  display: inline-block; /* Ensure buttons are side by side */
+  margin-left: 10px; /* Add space between buttons */
+}
+
+/* Style for the button */
+.appointment-button {
+  display: inline-block;
+  padding: 10px 40px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Style for the first rectangle (text-fitting) */
+.appointment-button-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000; /* Background color for the rectangle */
+  border-radius: none;
+  z-index: -1; /* Place behind the button */
+  transform: skew(-20deg); /* Skew the button for a slanted effect */
+}
+
+/* Style for the second rectangle (shadow-like) */
+.appointment-button-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 8px; /* Adjust for shadow effect */
+  left: 4px; /* Adjust for shadow effect */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(220, 50, 22, 0.34); /* Shadow color */
+  border-radius: none;
+  z-index: -2; /* Place behind the first rectangle */
+  transform: skew(-20deg); /* Skew the button for a slanted effect */
+}
+
+#appointmentTable th {
+  border-bottom: 2px solid #ffffff; /* Space between header and data */
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  background-color: transparent; /* Darker background for table headers */
+}
+
+#appointmentTable td {
+  width: 720px;
+  height: 49px;
+  flex-shrink: 0;
+  background-color: #101010; /* Black background for table data cells */
+  border-bottom: 1px solid rgba(220, 50, 22, 0.50); /* Dark red bottom border for table data cells */
+}
+
+/* Target the 3rd column (td elements inside the 3rd column) */
+#appointmentTable td:nth-child(4),
+#appointmentTable th:nth-child(4) {
+  /* Add your custom styles here */
+  width: fit-content;
+}
+
+#appointmentTable a {
+  color: #8b0000;
+  text-decoration: none;
+}
+
+#rowsPerPage {
+  padding: 8px;
+  border: 1px solid darkred; /* Light color for borders */
+  border-radius: 5px;
+  background-color: #333; /* Dark background for select */
+  color: #e0e0e0; /* Light text color for select */
+}
+
+/* second container Layout */
+.placeAnAppointment-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Space between left and right sides */
+  flex-grow: 1; /* Ensure form grows to fill available space */
+}
+
+/* Left and Right containers */
+.container-left,
+.container-right {
+  width: 50%; /* Each side takes 48% of the available width */
+}
+
+/* Label and input styling */
+/* Label styling */
+.container-left label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 17px;
+  font-weight: 300;
+  text-align: center; /* Ensure labels are left-aligned */
+}
+
+
+.container-left select {
+  width: 50%; /* Full width within the form */
+  height: 46px; /* Set the height of the select */
+  padding: 5px;
+  margin-bottom: 15px;
+  background-color: #4E4E4E; /* Dark background for select */
+  color: #fff; /* White text for select */
+  border-bottom: 2px solid #DC3216; /* Bottom border for select */
+  border-radius: 0; /* No rounded corners */
+  box-sizing: border-box;
+  appearance: none; /* Remove default arrow icon */
+  -webkit-appearance: none; /* Remove default arrow in Safari */
+  -moz-appearance: none; /* Remove default arrow in Firefox */
+  background-image: url('../img/Down\ Button.png'); /* Custom arrow icon */
+  background-position: right 10px center; /* Position the arrow on the right */
+  background-repeat: no-repeat;
+  background-size: 20px 20px; /* Adjust the size of the arrow */
+}
+
+.custom-select-container {
+  position: relative; /* Position relative for custom styling */
+}
+
+.custom-select-container::after {
+  content: ''; /* No additional content since we're using the image */
+  display: none; /* Remove the default arrow content */
+}
+
+select:focus {
+  outline: none; /* Remove the default focus outline */
+}
+
+/* Label Styling */
+.container-right label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 17px;
+  font-weight: 300;
+  text-align: center; /* Align label to the left */
+}
+
+.container-right input {
+  width: 50%; /* Full width within the form */
+  height: 46px; /* Set the height of the select */
+  padding: 5px;
+  margin-bottom: 15px;
+  background-color: #4E4E4E; /* Dark background for select */
+  color: #fff; /* White text for select */
+  border-bottom: 2px solid #DC3216; /* Bottom border for select */
+  border-radius: 0; /* No rounded corners */
+  box-sizing: border-box;
+}
+
+.container textarea {
+  width: 698px; /* Custom width */
+  height: 211.454px; /* Custom height */
+  padding: 5px;
+  background-color: #4E4E4E; /* Dark background similar to input */
+  color: #fff; /* White text for better readability */
+  border-bottom: 2px solid #DC3216; /* Bottom border similar to input */
+  border-radius: 0; /* No rounded corners */
+  box-sizing: border-box; /* Ensures padding is included in the width and height */
+  resize: none; /* Prevents resizing of the textarea */
+  margin-bottom: 15px; /* Space below the textarea */
+}
+
+.container textarea::placeholder {
+  color: #aaaaaa; /* Placeholder color */
+}
+
+
+/* Container for buttons */
+.appointment-button-container {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  position: relative; /* Allows for relative positioning of the container */
+
+}
+
+.see-more {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn {
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.accept {
+  background-color: #28a745;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.accept:hover {
+  background-color: #218838;
+}
+
+.decline {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.decline:hover {
+  background-color: #c82333;
+}
+
+/* Modal Background */
+.detailsReportModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 4.5%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Black background */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Modal Content */
+.detailsReportModal-content {
+  border: 2px solid rgba(255, 255, 255, 0.29);
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(2.5px);
+  padding: 0 40px 0 70px;
+  width: 620px; /* Modal width */
+  height: 650px; /* Modal height */
+  display: flex;
+  flex-direction: column;
+  border-radius: 0; /* No rounded corners */
+  color: #fff; /* White text */
+  box-sizing: border-box;
+  position: relative; /* For close button positioning */
+}
+
+
+
+/* Form Layout */
+.detailsReportModal-form-container {
+  display: flex;
+   /* Space between left and right sides */
+  flex-grow: 1; /* Ensure form grows to fill available space */
+}
+
+.details-modal-footer-line {
+  border: 0;
+  border-top: 5px solid #D50606; /* red horizontal line */
+  width: 85%; /* Adjust the length of the line here */
+  margin: 0 auto 30px 0; /* Center the line and add space below */
+  z-index: 1; /* Ensure line is above the modal content */
+}
+
+/* Close Button Styling */
+.close {
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: -15px; /* Positioned slightly outside the modal */
+  right: -15px; /* Positioned slightly outside the modal */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Round close button */
+  background-color: #D50606; /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid #000; /* White border around the close button */
+  transition: background-color 0.3s ease;
+}
+
+/* Close Button Hover Effect */
+.close:hover {
+  background-color: #555; /* Lighter background on hover */
+}
+
+#detailsTable {
+  width: 80%; /* Adjust the width as needed */
+  margin: 40px auto 0 auto; /* Reduced top margin to move the table upwards */
+  border-collapse: separate; /* Use separate borders for spacing between rows */
+  border-spacing: 0 10px; /* Add space between rows */
+}
+
+.details-table table {
+  width: 80%; /* Full width of container */
+  border-collapse: collapse; /* Remove gaps between table cells */
+}
+
+.details-table th, .details-table td {
+  padding: 10px; /* Add space within cells */
+  text-align: left; /* Align text to the left */
+}
+
+
+.details-table td {
+  font-size: 17px;
+  color: #ffffff; /* Text color */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .addVehicleModal-form-container {
+    flex-direction: column;
+  }
+  .modal-form-left,
+  .modal-form-right {
+    width: 100%; /* Full width in mobile */
+  }
+}

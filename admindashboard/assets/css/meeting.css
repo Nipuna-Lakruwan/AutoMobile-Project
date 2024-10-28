@@ -1,0 +1,117 @@
+body {
+  /*  background-color: #121212; Dark background for the whole page */
+  color: #e0e0e0; /* Light text color for readability */
+}
+
+.container {
+  max-width: auto;
+  margin: auto;
+
+
+
+  
+}
+
+h2 {
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#searchBox {
+  padding: 8px;
+  border: 1px solid darkred; 
+  border-radius: 5px;
+  width: 200px;
+  background-color: #333; /* Dark background for input */
+  color: #e0e0e0; /* Light text color for input */
+}
+
+#newMeetingBtn {
+  padding: 8px 16px;
+  background-color: darkred; 
+  color: #000; /* Dark text color for button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.filters input,
+.filters select {
+  padding: 8px;
+  border: 1px solid darkred; /* Light color for borders */
+  border-radius: 5px;
+  width: 150px;
+  background-color: #333; /* Dark background for filters */
+  color: #e0e0e0; /* Light text color for filters */
+}
+
+#meetingsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+#meetingsTable th,
+#meetingsTable td {
+  border: 1px solid #333; /* Dark border color */
+  padding: 10px;
+  text-align: center;
+}
+
+#meetingsTable th {
+  background-color: #2c2c2c; /* Darker background for table headers */
+}
+
+#meetingsTable a {
+  color: #8b0000;
+  text-decoration: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination span {
+  font-size: 14px;
+  color: #e0e0e0; /* Light color for pagination text */
+}
+
+#rowsPerPage {
+  padding: 8px;
+  border: 1px solid darkred; /* Light color for borders */
+  border-radius: 5px;
+  background-color: #333; /* Dark background for select */
+  color: #e0e0e0; /* Light text color for select */
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.pagination-controls button {
+  padding: 8px 12px;
+  border: 1px solid darkred; /* Light color for borders */
+  border-radius: 5px;
+  background-color: #444; /* Dark background for buttons */
+  color: #e0e0e0; /* Light text color for buttons */
+  cursor: pointer;
+}
+
+.pagination-controls button:hover {
+  background-color: #555; /* Slightly lighter background on hover */
+}

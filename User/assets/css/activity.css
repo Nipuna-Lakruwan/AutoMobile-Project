@@ -1,0 +1,288 @@
+body {
+  color: #e0e0e0; /* Light text color for readability */
+  margin: 0; /* Remove default margin */
+}
+
+.sidebar-nav .sidebar-item:nth-child(5) .sidebar-link {
+  border-bottom: 2px solid #DC3216; /* Adjust the thickness and color */
+}
+
+.activity-container {
+  max-width: 85%; /* Adjust as needed to fit the content */
+  color: #ffffff; /* Light text color for readability */
+  margin: auto; /* Center the container horizontally */
+  margin-top: 5.3%;
+  margin-left: 1.8%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+  background: rgba(59, 59, 59, 0.68); /* Dark background for the container */
+  backdrop-filter: blur(7.9px);
+  position: relative; /* Ensure container is positioned correctly above SVG */
+  z-index: 1; /* Ensure container is above SVG */
+}
+
+.container-h2,
+.container-h2-main {
+  color: #ffffff;
+  margin: 40px 20px 20px 80px; /* Adjust the margins as needed */
+  text-align: left; /* Aligns the header to the left */
+  position: relative; /* Allows for positioning adjustments */
+  top: 10px; /* Move the header down */
+  left: 1%; /* Move the header to the right */
+}
+
+.modal-footer-line {
+  border: 0;
+  border-top: 5px solid #D50606; /* red horizontal line */
+  width: 35%; /* Adjust the length of the line here */
+  margin: 0 0 30px 0; /* Align with the header */
+  margin-left: 2%;
+  position: relative; /* Allows for alignment adjustments */
+  top: 10px; /* Adjust to bring closer to the heading */
+  left: 70px; /* Align with the header's left position */
+  z-index: 1; /* Ensure line is above modal content */
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#meetingsTable {
+  width: 80%; /* Adjust the width as needed */
+  margin: 40px auto 0 auto; /* Add margin to move the table down and center it horizontally */
+  border-collapse: separate; /* Use separate borders for spacing between rows */
+  border-spacing: 0 10px; /* Add space between rows */
+}
+
+/* Style for the footer line and buttons */
+.table-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px; /* Space between the table and the footer */
+}
+
+.footer-line {
+  border: 0;
+  border-top: 2px solid #ffffff; /* White horizontal line */
+  width: 80%; /* Adjust the length of the line here */
+  margin: 0 auto 20px auto; /* Center the line and add space below */
+}
+
+.timeLine-line {
+  border: 0;
+  border-top: 2px solid #ffffff; /* White horizontal line */
+  width: 90%; /* Adjust the length of the line here */
+}
+
+/* Container for buttons */
+.vehicle-button-container {
+  display: flex;
+  /*justify-content: center; /* Center buttons horizontally */
+  gap: 50px; /* Increase the gap to add more space between buttons */
+  /*margin: 20px auto; /* Space above and below the buttons, center container horizontally */
+  position: relative; /* Allows for relative positioning of the container */
+  left: 8%; /* Move the container slightly to the right */
+}
+
+/* Style for the button wrapper to create shadow effect */
+.vehicle-button-wrapper{
+  position: relative;
+  display: inline-block; /* Ensure buttons are side by side */
+}
+
+/* Style for the button */
+.vehicle-button-wrapper button{
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  z-index: 1; /* Ensure button text is above the shadow */
+  background-color: transparent; /* Make button background transparent */
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Style for the first rectangle (text-fitting) */
+.vehicle-button-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000; /* Background color for the rectangle */
+  border-radius: none;
+  z-index: -1; /* Place behind the button */
+  transform: skew(-20deg); /* Skew the button for a slanted effect */
+}
+
+/* Style for the second rectangle (shadow-like) */
+.vehicle-button-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 8px; /* Adjust for shadow effect */
+  left: 4px; /* Adjust for shadow effect */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(220, 50, 22, 0.34); /* Shadow color */
+  border-radius: none;
+  z-index: -2; /* Place behind the first rectangle */
+  transform: skew(-20deg); /* Skew the button for a slanted effect */
+}
+
+#meetingsTable th {
+  border-bottom: 2px solid #ffffff; /* Space between header and data */
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  background-color: transparent; /* Darker background for table headers */
+}
+
+#meetingsTable td {
+  width: 720px;
+  height: 49px;
+  flex-shrink: 0;
+  background-color: #101010; /* Black background for table data cells */
+  border-bottom: 1px solid rgba(220, 50, 22, 0.50); /* Dark red bottom border for table data cells */
+}
+
+#meetingsTable a {
+  color: #8b0000;
+  text-decoration: none;
+}
+
+#rowsPerPage {
+  padding: 8px;
+  border: 1px solid darkred; /* Light color for borders */
+  border-radius: 5px;
+  background-color: #333; /* Dark background for select */
+  color: #e0e0e0; /* Light text color for select */
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.pagination-controls button {
+  padding: 8px 12px;
+  border: 1px solid darkred; /* Light color for borders */
+  border-radius: 5px;
+  background-color: #444; /* Dark background for buttons */
+  color: #e0e0e0; /* Light text color for buttons */
+  cursor: pointer;
+}
+
+.pagination-controls button:hover {
+  background-color: #555; /* Slightly lighter background on hover */
+}
+
+
+
+
+.datetime {
+  text-align: left;
+  margin-bottom: 70px;
+  margin-left: 8%;
+}
+
+.date-time1 {
+  font-size: 18px;
+  color: #ccc;
+}
+
+.date-time2 {
+  font-size: 18px;
+  color: #ccc;
+}
+
+
+.timeline {
+  margin-top: 20px;
+  position: relative;
+  padding-left: 10%;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline-item, .timeline-last-item {
+  display: flex;
+  align-items: flex-start; /* Aligns items to the start */
+  margin-bottom: 20px;
+  position: relative;
+  color: #ccc; /* Inactive text color */
+}
+
+.circle {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+  z-index: 1;
+  /* Move the circle up */
+  margin-top: -15px;  /* Adjust this value to move the circles */
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 150%;
+  background-color: #a30f0f;
+  top: 10%;
+  left: 7px;
+  z-index: 0;
+}
+
+.timeline-item:last-child::before {
+  height: 50%;
+}
+
+.highlighted-text {
+  font-weight: bold;
+  color: #fff;
+}
+
+.quotation {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+.timeline-item.active {
+  font-weight: bold; /* Active item is bold */
+  color: #ffffff; /* Active text color */
+}
+
+.timeline-item:not(.active) .circle {
+  background-color: #444; /* Darker color for inactive circles */
+}
+
+.timeline-item.active .circle {
+  background-color: #D50606; /* Highlight color for active circles */
+}
+
+.highlighted-text {
+  font-weight: bold; /* Make highlighted text bold */
+  color: #fff; /* Color for highlighted text */
+  margin: 0; /* Remove margin for better alignment */
+}
+
+.quotation {
+  font-size: 12px; /* Adjust font size if needed */
+  color: #aaa; /* Color for the quotation text */
+  margin-top: 5px; /* Space between highlighted text and quotation */
+}

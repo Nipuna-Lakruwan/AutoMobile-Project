@@ -1,0 +1,305 @@
+body {
+  color: #e0e0e0; /* Light text color for readability */
+  margin: 0; /* Remove default margin */
+}
+
+.sidebar-nav .sidebar-item:nth-child(4) .sidebar-link {
+  border-bottom: 2px solid #DC3216; /* Adjust the thickness and color */
+}
+
+.viewBill-container {
+  max-width: 85%; /* Adjust as needed to fit the content */
+  color: #ffffff; /* Light text color for readability */
+  margin: auto; /* Center the container horizontally */
+  margin-top: 60px; /* Reduce the top margin */
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+  text-align: center; /* Center all text and inline elements within the container */
+  background: rgba(59, 59, 59, 0.68); /* Dark background for the container */
+  backdrop-filter: blur(7.9px);
+  position: relative; /* Ensure container is positioned correctly above SVG */
+  z-index: 1; /* Ensure container is above SVG */
+}
+
+h2 {
+  color: #ffffff;
+  margin: 40px 20px 20px 80px; /* Reduce top and bottom margins */
+  text-align: left; /* Aligns the header to the left */
+  position: relative; /* Allows for positioning adjustments */
+  top: 10px; /* Move the header down */
+  left: 1%; /* Move the header to the right */
+
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#viewBillTable {
+  width: 80%; /* Adjust the width as needed */
+  margin: 40px auto 0 auto; /* Add margin to move the table down and center it horizontally */
+  border-collapse: separate; /* Use separate borders for spacing between rows */
+  border-spacing: 0 10px; /* Add space between rows */
+}
+
+/* Style for the footer line and buttons */
+.viewBill-table-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px; /* Space between the table and the footer */
+}
+
+.viewBill-footer-line {
+  border: 0;
+  border-top: 2px solid #ffffff; /* White horizontal line */
+  width: 80%; /* Adjust the length of the line here */
+  margin: 0 auto 70px auto; /* Center the line and add space below */
+}
+
+#viewBillTable th {
+  border-bottom: 2px solid #ffffff; /* Space between header and data */
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+  background-color: transparent; /* Darker background for table headers */
+  text-align: center; /* Center the table headers */
+}
+
+#viewBillTable td {
+  width: 720px;
+  height: 49px;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.50); /* Black background for table data cells */
+  border-bottom: 1px solid rgba(220, 50, 22, 0.50); /* Dark red bottom border for table data cells */
+  text-align: center; /* Center the table headers */
+}
+
+#viewBillTable a {
+  color: #8b0000;
+  text-decoration: none;
+}
+
+.modal-footer-line {
+  border: 0;
+  border-top: 5px solid #D50606; /* red horizontal line */
+  width: 70%; /* Adjust the length of the line here */
+  margin: 0 auto 30px 0; /* Center the line and add space below */
+  z-index: 1; /* Ensure line is above the modal content */
+}
+
+/* Modal Background */
+.invoiceModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 4%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Black background */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Modal Content */
+.invoiceModal-content {
+  border: 2px solid rgba(255, 255, 255, 0.29);
+  background: rgba(0, 0, 0, 0.64);
+  backdrop-filter: blur(6.4px);
+  padding: 30px;
+  width: 700px; /* Adjust width as needed */
+  max-width: 90%; /* Make it responsive */
+  max-height: 90%; /* Keep content inside view on smaller screens */
+  color: #fff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative; /* For close button positioning */
+  overflow-y: auto; /* Scroll content if it overflows */
+  border-radius: 10px; /* Rounded corners for modal */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Move the header upwards */
+.invoiceModal-content h2 {
+  margin-top: 10px; /* Move the header up */
+  margin-left: 0;
+  margin-bottom: 15px;
+}
+
+/* Close Button Styling */
+.close {
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 15px; /* Positioned slightly outside the modal */
+  right: 15px; /* Positioned slightly outside the modal */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Round close button */
+  background-color: #D50606; /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid #000; /* White border around the close button */
+  transition: background-color 0.3s ease;
+}
+
+/* Close Button Hover Effect */
+.close:hover {
+  background-color: #555; /* Lighter background on hover */
+}
+
+
+
+/* Customer Information styling */
+.invoice-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Ensure each label and input are aligned in a row */
+.customer-info .form-group {
+  display: flex;
+  align-items: center; /* Align labels and inputs vertically */
+  margin-bottom: 15px; /* Space between each form group */
+}
+
+.customer-info label {
+  width: 120px; /* Adjust label width to align */
+  text-align: right; /* Right-align the label */
+  margin-right: 20px; /* Space between the label and input */
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.customer-info input {
+  background-color: #2a2a2a; /* Dark background for input fields */
+  border: 1px solid #555;
+  border-radius: 5px;
+  padding: 8px;
+  color: white;
+  width: 250px; /* Set input field width */
+}
+
+/* Payable Box */
+.total-payable {
+  position: absolute; /* Absolute positioning to move it within the container */
+  top: 40%; /* Center vertically */
+  right: 20px; /* Align to the right */
+  transform: translateY(-50%); /* Adjust for perfect vertical centering */
+  width: 200px; /* Set a smaller width */
+  background-color: #3e3e3e;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.total-payable .payable-box {
+  background-color: #2f2f2f;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.total-payable .payable-box span {
+  font-size: 20px;
+  color: #ff4949;
+}
+
+.total-payable .payable-box strong {
+  font-size: 24px;
+  color: white;
+}
+
+/* Divider Line */
+.divider {
+  border: 0;
+  border-bottom: 1px solid #888;
+  margin: 20px 0;
+}
+
+/* Divider row styling */
+.divider-row {
+  border-top: 2px solid #ffffff; /* White line for the divider */
+  height: 10px; /* Add some height to the divider row */
+}
+
+/* Table Details */
+/* Style for h3 in charges-details */
+.charges-details h3 {
+  text-align: left;
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold; /* Make h3 bold */
+  padding-left: 20px; /* Move h3 a little bit to the right */
+}
+
+
+.charges-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.charges-details table td {
+  padding: 10px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.charges-details table th {
+  padding: 10px;
+  text-align: left;
+  color: #b0b0b0;
+}
+
+/* Style for table foot */
+.charges-details tfoot {
+  font-weight: bold; /* Make tfoot bold */
+}
+
+.charges-details tfoot td {
+  padding-top: 10px; /* Add some padding to the top of tfoot cells */
+}
+
+/* Ensure the table cells have some space between the rows */
+.charges-details table td, table th {
+  padding: 10px;
+}
+
+/* Style for table header */
+.charges-details table th {
+  padding: 10px;
+  text-align: left;
+  color: #b0b0b0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .customer-info .form-group {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .customer-info label {
+      width: auto;
+      text-align: left;
+      margin-right: 0;
+      margin-bottom: 5px; /* Add space between label and input */
+  }
+
+  .customer-info input {
+      width: 100%; /* Full width input on smaller screens */
+  }
+}
