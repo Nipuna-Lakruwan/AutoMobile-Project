@@ -1,6 +1,12 @@
+<?php
+// Get the current page filename
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
+
+
 <!-- Sidebar -->
 <div class="sidebar">
-  <a href="../index.html" class="logo">
+  <a href="/AutoMobile Project/admin/index.php" class="logo">
     <svg xmlns="http://www.w3.org/2000/svg" width="37" height="41" viewBox="0 0 37 41" fill="none">
       <g clip-path="url(#clip0_390_1506)">
         <path d="M35.9763 5.83282L17.9834 0.5L0.00588989 5.83282V6.85297C0.0705966 10.5626 0.48215 14.258 1.23517 17.891C1.05664 16.9014 0.569524 12.9943 2.79345 7.88332L17.9834 3.38192L33.1862 7.88842C32.9592 11.1554 33.3112 15.9884 27.1418 18.9111C21.378 21.6451 18.9271 21.6273 18.9271 21.6273C18.0348 20.8776 16.9137 20.4544 15.7486 20.4273C14.5836 20.4002 13.444 20.771 12.5179 21.4784C11.5918 22.1858 10.9343 23.1876 10.6539 24.3188C10.3735 25.4499 10.4869 26.6429 10.9754 27.7009C11.4639 28.759 12.2984 29.619 13.3412 30.1393C14.384 30.6595 15.573 30.8089 16.7121 30.5628C17.8512 30.3167 18.8725 29.6898 19.6075 28.7855C20.3426 27.8812 20.7476 26.7534 20.7557 25.588C32.2375 20.7142 36.8001 17.0034 35.9763 5.83282ZM18.5598 27.1922L17.5958 27.6767L17.0373 28.6L15.9738 28.4266L14.9791 28.8474L14.214 28.0823L13.1658 27.8272L13 26.7612L12.2961 25.945L12.7883 24.9861L12.6965 23.9124L13.6606 23.4253L14.2191 22.502L15.2826 22.678L16.2772 22.2572L17.0424 23.0223L18.0931 23.2774L18.2563 24.3434L18.9628 25.1595L18.468 26.1185L18.5598 27.1922Z" fill="darkred" />
@@ -15,20 +21,20 @@
     <div class="logo-name"><span>Namak</span>Na</div>
   </a>
   <ul class="side-menu">
-    <li class="active"><a href="../index.php"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-    <li><a href="../vehicles.php"><i class='bx bx-car'></i>Vehicles</a></li>
-    <li><a href="../bookings.php"><i class='bx bx-calendar'></i>Bookings</a></li>
-    <li><a href="../inspections.php"><i class='bx bxs-car-mechanic'></i>Inspections</a></li>
-    <li><a href="../inventory.php"><i class='bx bx-basket'></i>Inventory</a></li>
-    <li><a href="../invoices.php"><i class='bx bxs-report'></i>Invoices</a></li>
-    <li><a href="../quotation.php"><i class='bx bx-checkbox-checked'></i>Quotations</a></li>
-    <li><a href="../sales.php"><i class='bx bx-cart'></i>Sales</a></li>
-    <li><a href="../purchasing.php"><i class='bx bx-cart-add'></i>Purchasing</a></li>
-    <li><a href="../cashBank.php"><i class='bx bxs-bank'></i>Cash/Bank</a></li>
-    <li><a href="../financial.php"><i class='bx bx-briefcase'></i>Financial</a></li>
-    <li><a href="../humanResource.php"><i class='bx bx-body'></i>Human Resource</a></li>
-    <li><a href="../reports.php"><i class='bx bx-circle'></i>Reports</a></li>
-    <li><a href="../administrtion.php"><i class='bx bx-cog'></i>Administration</a></li>
+    <li><a href="/AutoMobile Project/admin/index.php" class="<?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+    <li><a href="/AutoMobile Project/admin/vehicles.php" class="<?php echo ($currentPage == 'vehicles.php') ? 'active' : ''; ?>"><i class='bx bx-car'></i>Vehicles</a></li>
+    <li><a href="/AutoMobile Project/admin/bookings.php" class="<?php echo ($currentPage == 'bookings.php') ? 'active' : ''; ?>"><i class='bx bx-calendar'></i>Bookings</a></li>
+    <li><a href="/AutoMobile Project/admin/inspections.php" class="<?php echo ($currentPage == 'inspections.php') ? 'active' : ''; ?>"><i class='bx bxs-car-mechanic'></i>Inspections</a></li>
+    <li><a href="/AutoMobile Project/admin/inventory.php" class="<?php echo ($currentPage == 'inventory.php') ? 'active' : ''; ?>"><i class='bx bx-basket'></i>Inventory</a></li>
+    <li><a href="/AutoMobile Project/admin/invoices.php" class="<?php echo ($currentPage == 'invoices.php') ? 'active' : ''; ?>"><i class='bx bxs-report'></i>Invoices</a></li>
+    <li><a href="/AutoMobile Project/admin/quotation.php" class="<?php echo ($currentPage == 'quotation.php') ? 'active' : ''; ?>"><i class='bx bx-checkbox-checked'></i>Quotations</a></li>
+    <li><a href="/AutoMobile Project/admin/sales.php" class="<?php echo ($currentPage == 'sales.php') ? 'active' : ''; ?>"><i class='bx bx-cart'></i>Sales</a></li>
+    <li><a href="/AutoMobile Project/admin/purchasing.php" class="<?php echo ($currentPage == 'purchasing.php') ? 'active' : ''; ?>"><i class='bx bx-cart-add'></i>Purchasing</a></li>
+    <li><a href="/AutoMobile Project/admin/cashBank.php" class="<?php echo ($currentPage == 'cashBank.php') ? 'active' : ''; ?>"><i class='bx bxs-bank'></i>Cash/Bank</a></li>
+    <li><a href="/AutoMobile Project/admin/financial.php" class="<?php echo ($currentPage == 'financial.php') ? 'active' : ''; ?>"><i class='bx bx-briefcase'></i>Financial</a></li>
+    <li><a href="/AutoMobile Project/admin/humanResource.php" class="<?php echo ($currentPage == 'humanResource.php') ? 'active' : ''; ?>"><i class='bx bx-body'></i>Human Resource</a></li>
+    <li><a href="/AutoMobile Project/admin/reports.php" class="<?php echo ($currentPage == 'reports.php') ? 'active' : ''; ?>"><i class='bx bx-circle'></i>Reports</a></li>
+    <li><a href="/AutoMobile Project/admin/administration.php" class="<?php echo ($currentPage == 'administration.php') ? 'active' : ''; ?>"><i class='bx bx-cog'></i>Administration</a></li>
   </ul>
   <ul class="side-menu">
     <li>
