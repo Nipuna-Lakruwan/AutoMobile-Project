@@ -74,12 +74,13 @@ body{
 .sidebar .logo{
     font-size: 24px;
     font-weight: 700;
-    height: 56px;
+    height: 44px;
     display: flex;
     align-items: center;
     color: var(--primary);
     z-index: 500;
-    padding-bottom: 20px;
+    padding: 0 16%;
+    margin-top: 6%;
     box-sizing: content-box;
 }
 
