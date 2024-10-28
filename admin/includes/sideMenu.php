@@ -17,7 +17,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <li><a href="/AutoMobile Project/admin/inspections.php" class="<?php echo ($currentPage == 'inspections.php') ? 'active' : ''; ?>"><i class='bx bxs-car-mechanic'></i>Inspections</a></li>
     <li><a href="/AutoMobile Project/admin/inventory.php" class="<?php echo ($currentPage == 'inventory.php') ? 'active' : ''; ?>"><i class='bx bx-basket'></i>Inventory</a></li>
     <li><a href="/AutoMobile Project/admin/invoices.php" class="<?php echo ($currentPage == 'invoices.php') ? 'active' : ''; ?>"><i class='bx bxs-report'></i>Invoices</a></li>
-    <li><a href="/AutoMobile Project/admin/quotation.php" class="<?php echo ($currentPage == 'quotation.php') ? 'active' : ''; ?>"><i class='bx bx-checkbox-checked'></i>Quotations</a></li>
+    <!-- <li><a href="/AutoMobile Project/admin/quotation.php" class="<?php echo ($currentPage == 'quotation.php') ? 'active' : ''; ?>"><i class='bx bx-checkbox-checked'></i>Quotations</a></li> -->
     <li><a href="/AutoMobile Project/admin/sales.php" class="<?php echo ($currentPage == 'sales.php') ? 'active' : ''; ?>"><i class='bx bx-cart'></i>Sales</a></li>
     <li><a href="/AutoMobile Project/admin/purchasing.php" class="<?php echo ($currentPage == 'purchasing.php') ? 'active' : ''; ?>"><i class='bx bx-cart-add'></i>Purchasing</a></li>
     <li><a href="/AutoMobile Project/admin/cashBank.php" class="<?php echo ($currentPage == 'cashBank.php') ? 'active' : ''; ?>"><i class='bx bxs-bank'></i>Cash/Bank</a></li>
