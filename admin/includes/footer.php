@@ -12,15 +12,27 @@
 
 <style>
 
+.footer html, body {
+    height: 100%; /* Ensure full height */
+    margin: 0; /* Reset margin */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh; /* Take full viewport height */
+}
+
+.content {
+    flex: 1; /* Allow content to grow */
+}
+
 .footer {
     background: var(--light);
     color: var(--dark);
     padding: 20px 24px;
     text-align: center;
     border-top: 1px solid var(--grey);
-    position: relative;
-    bottom: 0;
-    left: 0;
     width: 100%;
 }
 
