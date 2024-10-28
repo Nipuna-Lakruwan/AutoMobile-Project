@@ -71,6 +71,7 @@
               <!-- Add more rows as needed in js -->
             </tbody>
           </table>
+        </div>
           <div class="pagination">
             <span>Showing 1 to 1 of 1 total records</span>
             <select id="rowsPerPage">
@@ -89,7 +90,7 @@
         </div>
       </main>
     </div>
-  </div>
+  </div><br><br>
   <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
   <!-- End of Wrapper -->
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
