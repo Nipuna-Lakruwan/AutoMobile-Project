@@ -4,7 +4,7 @@
     if(isset($_SESSION['auth'])){
         if($_SESSION['auth_user']['role'] == 'admin'){
             $_SESSION['message'] = 'Welcome to Admin Dashboard';
-            header('Location: /AutoMobile Project/admin/index.php');
+            header('Location: /AutoMobile Project/admin/dashboard.php');
             exit();
         } elseif ($_SESSION['auth_user']['role'] == 'employee') {
             $_SESSION['message'] = 'Welcome to Employee Dashboard';
