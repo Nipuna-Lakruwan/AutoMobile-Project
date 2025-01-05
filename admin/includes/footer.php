@@ -3,7 +3,7 @@
 ?>
 
 <footer class="footer">
-    <p>&copy; 2024 CRAS. All rights reserved.</p>
+    <p>&copy; 2025 CRAS. All rights reserved.</p>
     <p>
         <a href="#">Privacy Policy</a> | 
         <a href="#">Terms of Service</a>
