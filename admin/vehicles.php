@@ -10,6 +10,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/AutoMobile Project/admin/assets/css/style.css">
   <link rel="stylesheet" href="/AutoMobile Project/admin/assets/css/meeting.css">
+  <link rel="stylesheet" href="/AutoMobile Project/admin/assets/css/vehicle.css">
   <title>Dashboard - Vehicles</title>
 </head>
 
@@ -35,7 +36,7 @@
         <div class="container">
           <div class="toolbar">
             <input type="text" id="searchBox" placeholder="search..." />
-            <button id="newMeetingBtn">+ New Meetings</button>
+            <button id="newMeetingBtn">+ New Vehicle</button>
           </div>
           <div class="filters">
             <select id="customerName">
@@ -93,43 +94,24 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td><a href="#">Nipuna Lakruwan</a></td>
-                <td>WP CA-1234</td>
-                <td>2021</td>
-                <td>5</td>
-                <td>Honda</td>
-                <td>1500</td>
-                <td>VW Vento</td>
-                <td>Petrol</td>
-                <td>Red</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td><a href="#">Pasindu Deshan</a></td>
-                <td>WP CA-5678</td>
-                <td>2022</td>
-                <td>5</td>
-                <td>Toyota</td>
-                <td>1500</td>
-                <td>Toyota Corolla</td>
-                <td>Petrol</td>
-                <td>Blue</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td><a href="#">Malaka Perera</a></td>
-                <td>WP CA-9876</td>
-                <td>2021</td>
-                <td>5</td>
-                <td>Honda</td>
-                <td>1500</td>
-                <td>VW Vento</td>
-                <td>Petrol</td>
-                <td>Red</td>
-              </tr>
-              <!-- Add more rows as needed -->
+              <!-- Data populated dynamically from PHP -->
+              <?php
+              // Example row (Replace with dynamic data)
+              echo "
+                  <tr>
+                    <td>1</td>
+                    <td><a href='#' class='customer-link' data-id='1'>Nipuna Lakruwan</a></td>
+                    <td>WP CA-1234</td>
+                    <td>2021</td>
+                    <td>5</td>
+                    <td>Honda</td>
+                    <td>1500</td>
+                    <td>VW Vento</td>
+                    <td>Petrol</td>
+                    <td>Red</td>
+                  </tr>
+                ";
+              ?>
             </tbody>
           </table>
         </div>
@@ -148,6 +130,96 @@
     </div>
     </main>
   </div><br><br>
+
+  <!-- Add New Vehicle Modal -->
+  <div id="addVehicleModal" class="modal add-vehicle-modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeAddVehicleModal">&times;</span>
+      <h2>Add New Vehicle</h2>
+      <form id="addVehicleForm">
+        <div class="form-group">
+          <label for="vehicleRegistration">Vehicle Registration:</label>
+          <input type="text" id="vehicleRegistration" name="vehicleRegistration" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicleCustomerName">Customer Name:</label>
+          <input type="text" id="vehicleCustomerName" name="vehicleCustomerName" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicleManufacturer">Manufacturer:</label>
+          <input type="text" id="vehicleManufacturer" name="vehicleManufacturer" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicleModel">Model:</label>
+          <input type="text" id="vehicleModel" name="vehicleModel" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicleFuelType">Fuel Type:</label>
+          <input type="text" id="vehicleFuelType" name="vehicleFuelType" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicleColor">Color:</label>
+          <input type="text" id="vehicleColor" name="vehicleColor" required>
+        </div>
+        <div class="form-group">
+          <label for="vehicleYear">Year:</label>
+          <input type="text" id="vehicleYear" name="vehicleYear" required>
+        </div>
+        <button type="submit" id="submitAddVehicleForm">Add Vehicle</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Customer Details Modal -->
+  <div id="viewCustomerModal1" class="modal customer-details-modal-1">
+    <div class="modal-content">
+      <span class="close-button" id="closeCustomerModal1">&times;</span>
+      <h2>Customer Details</h2>
+      <div class="customer-table-container-1">
+        <table class="customer-details-table-1" id="meetingsTable1">
+          <thead>
+            <tr>
+              <th>Detail</th>
+              <th>Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Customer Name</td>
+              <td id="customerName1">Nipuna Lakruwan</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td id="customerEmail1">nipuna@example.com</td>
+            </tr>
+            <tr>
+              <td>Phone Number</td>
+              <td id="customerPhone1">+94 712345678</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td id="customerAddress1">123 Main Street, Colombo</td>
+            </tr>
+            <tr>
+              <td>Registered Vehicles</td>
+              <td id="customerVehicles1">
+                <ul>
+                  <li>WP CA-1234 - Honda</li>
+                  <li>WP CA-5678 - Toyota</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Registration Date</td>
+              <td id="customerRegistrationDate1">2023-05-15</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="close-modal-btn-1" id="closeCustomerDetailsBtn1">Close</button>
+    </div>
+  </div>
+
   <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
 
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
