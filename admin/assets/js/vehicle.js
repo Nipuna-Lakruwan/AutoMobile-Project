@@ -1,49 +1,58 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const searchBox = document.getElementById('searchBox');
-  const newMeetingBtn = document.getElementById('newMeetingBtn');
-  const rowsPerPage = document.getElementById('rowsPerPage');
-  const meetingsTable = document.getElementById('meetingsTable').getElementsByTagName('tbody')[0];
+    const modal = document.getElementById("addVehicleModal");
+    const btn = document.getElementById("newMeetingBtn");
+    const closeButton = document.getElementById("closeAddVehicleModal");
 
-  // Function to render table rows
-  function renderTableRows(meetings) {
-      meetingsTable.innerHTML = '';
-      meetings.forEach(meeting => {
-          let row = meetingsTable.insertRow();
-          row.insertCell(0).innerText = meeting.id;
-          row.insertCell(1).innerHTML = `<a href="#">${meeting.name}</a>`;
-          row.insertCell(2).innerText = meeting.type;
-          row.insertCell(3).innerText = meeting.startDate;
-          row.insertCell(4).innerText = meeting.endDate;
-          row.insertCell(5).innerText = meeting.department;
-          row.insertCell(6).innerText = meeting.location;
-          row.insertCell(7).innerText = meeting.organizedBy;
-          row.insertCell(8).innerText = meeting.reporter;
-      });
-  }
+    // Ensure modal is hidden on page load
+    modal.style.display = "none";
 
-  // Initial render
-  renderTableRows(meetings);
+    // Event listener to open the modal
+    btn.addEventListener('click', function() {
+        modal.style.display = "block";
+    });
 
-  // Search functionality
-  searchBox.addEventListener('input', function() {
-      const query = searchBox.value.toLowerCase();
-      const filteredMeetings = meetings.filter(meeting => 
-          meeting.name.toLowerCase().includes(query) ||
-          meeting.type.toLowerCase().includes(query) ||
-          meeting.department.toLowerCase().includes(query)
-      );
-      renderTableRows(filteredMeetings);
-  });
+    // Event listener to close the modal
+    closeButton.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
 
-    // Redirect to "New Meetings" page when the button is clicked
-    newMeetingBtn.addEventListener('click', function() {
-      window.location.href = 'newMeeting.html';
-  });
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 
-  // Rows per page functionality (for demonstration purposes, it's static)
-  rowsPerPage.addEventListener('change', function() {
-      const rows = parseInt(rowsPerPage.value);
-      const paginatedMeetings = meetings.slice(0, rows);
-      renderTableRows(paginatedMeetings);
-  });
+    // View Customer Modal
+    const viewCustomerModal = document.getElementById("viewCustomerModal1");
+    const closeCustomerModalButton = document.getElementById("closeCustomerModal1");
+    const closeCustomerDetailsBtn = document.getElementById("closeCustomerDetailsBtn1");
+
+    // Ensure view customer modal is hidden on page load
+    viewCustomerModal.style.display = "none";
+
+    // Event listener to open the view customer modal
+    document.querySelectorAll('.customer-link').forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            viewCustomerModal.style.display = "block";
+            // Populate customer details here if needed
+        });
+    });
+
+    // Event listener to close the view customer modal
+    closeCustomerModalButton.addEventListener('click', function() {
+        viewCustomerModal.style.display = "none";
+    });
+
+    closeCustomerDetailsBtn.addEventListener('click', function() {
+        viewCustomerModal.style.display = "none";
+    });
+
+    // Close the view customer modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target === viewCustomerModal) {
+            viewCustomerModal.style.display = "none";
+        }
+    });
 });
