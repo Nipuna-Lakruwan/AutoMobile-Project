@@ -10,6 +10,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/AutoMobile Project/admin/assets/css/style.css">
   <link rel="stylesheet" href="/AutoMobile Project/admin/assets/css/meeting.css">
+  <link rel="stylesheet" href="/AutoMobile Project/admin/assets/css/cashBank.css">
   <title>Dashboard - Cash/Bank</title>
 </head>
 
@@ -107,6 +108,86 @@
     </div>
   </div>
   </main>
+
+  <!-- New Transaction Modal -->
+  <div id="newTransactionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>New Transaction</h2>
+      <form id="newTransactionForm">
+        <label for="transactionName">Transaction Name:</label>
+        <input type="text" id="transactionName" name="transactionName" required />
+
+        <label for="transactionType">Transaction Type:</label>
+        <select id="transactionType" name="transactionType" required>
+          <option value="Deposit">Deposit</option>
+          <option value="Withdrawal">Withdrawal</option>
+        </select>
+
+        <label for="transactionDate">Transaction Date:</label>
+        <input type="date" id="transactionDate" name="transactionDate" required />
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required />
+
+        <label for="locationName">Location Name:</label>
+        <input type="text" id="locationName" name="locationName" required />
+
+        <label for="managedBy">Managed By:</label>
+        <select id="managedBy" name="managedBy" required>
+          <option value="John Doe">John Doe</option>
+          <option value="Jane Smith">Jane Smith</option>
+        </select>
+
+        <label for="approvedBy">Approved By:</label>
+        <select id="approvedBy" name="approvedBy" required>
+          <option value="Approver 1">Approver 1</option>
+          <option value="Approver 2">Approver 2</option>
+        </select>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for Viewing Transaction Details -->
+  <div id="viewTransactionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Transaction Details</h2>
+      <table id="transactionDetailsTable">
+        <tr>
+          <th>Transaction Name:</th>
+          <td><span id="transactionName">-</span></td>
+        </tr>
+        <tr>
+          <th>Transaction Type:</th>
+          <td><span id="transactionType">-</span></td>
+        </tr>
+        <tr>
+          <th>Transaction Date:</th>
+          <td><span id="transactionDate">-</span></td>
+        </tr>
+        <tr>
+          <th>Amount:</th>
+          <td><span id="transactionAmount">-</span></td>
+        </tr>
+        <tr>
+          <th>Location Name:</th>
+          <td><span id="transactionLocation">-</span></td>
+        </tr>
+        <tr>
+          <th>Managed By:</th>
+          <td><span id="transactionManagedBy">-</span></td>
+        </tr>
+        <tr>
+          <th>Approved By:</th>
+          <td><span id="transactionApprovedBy">-</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
   <?php include 'includes/footer.php'; ?> <!-- Include the footer -->
   <!-- End of Wrapper -->
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
