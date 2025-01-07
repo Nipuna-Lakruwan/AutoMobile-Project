@@ -88,3 +88,71 @@ const toggle = () => classList.toggle("active");
 window.addEventListener("click", function (e) {
   if (!btn.contains(e.target)) classList.remove("active");
 });
+
+// Function to download data as CSV
+function downloadCSV() {
+    const data = gatherDashboardData();
+    const csvContent = convertToCSV(data);
+    
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    if (link.download !== undefined) { // Ensure the download functionality is supported
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'dashboard_data.csv');
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+  
+  // Function to gather all the data from the dashboard pages
+  function gatherDashboardData() {
+    const data = [];
+    
+    // Example: Gather table rows
+    const table = document.querySelector('#dashboardTable');
+    const rows = table.querySelectorAll('tr');
+    
+    rows.forEach((row) => {
+      const rowData = [];
+      const cols = row.querySelectorAll('td, th');
+      cols.forEach((col) => {
+        rowData.push(col.innerText.trim());
+      });
+      data.push(rowData);
+    });
+  
+    return data;
+  }
+  
+  // Function to convert data array to CSV format
+  function convertToCSV(data) {
+    return data.map(row => row.join(',')).join('\n');
+  }
+  
+  // Function to download data as PDF
+  function downloadPDF() {
+    const doc = new jsPDF();
+    const data = gatherDashboardData();
+    
+    let y = 10; // Starting y position for text
+    data.forEach(row => {
+      doc.text(row.join(' | '), 10, y);
+      y += 10;
+    });
+  
+    doc.save('dashboard_data.pdf');
+  }
+  
+  // Event Listeners for CSV and PDF download buttons
+  document.getElementById('downloadCSV').addEventListener('click', function (e) {
+    e.preventDefault();
+    downloadCSV();
+  });
+  
+  document.getElementById('downloadPDF').addEventListener('click', function (e) {
+    e.preventDefault();
+    downloadPDF();
+  });
