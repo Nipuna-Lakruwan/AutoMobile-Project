@@ -14,7 +14,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <li class="<?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/index.php"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
     <li class="<?php echo ($currentPage == 'vehicles.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/vehicles.php"><i class='bx bx-car'></i>Vehicles</a></li>
     <li class="<?php echo ($currentPage == 'bookings.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/bookings.php"><i class='bx bx-calendar'></i>Bookings</a></li>
-    <li class="<?php echo ($currentPage == 'inspections.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/inspections.php"><i class='bx bxs-car-mechanic'></i>Inspections</a></li>
+    <!-- <li class="<?php echo ($currentPage == 'inspections.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/inspections.php"><i class='bx bxs-car-mechanic'></i>Inspections</a></li> -->
     <li class="<?php echo ($currentPage == 'inventory.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/inventory.php"><i class='bx bx-basket'></i>Inventory</a></li>
     <li class="<?php echo ($currentPage == 'invoices.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/invoices.php"><i class='bx bxs-report'></i>Invoices</a></li>
     <!-- <li><a href="/AutoMobile Project/admin/quotation.php" class="<?php echo ($currentPage == 'quotation.php') ? 'active' : ''; ?>"><i class='bx bx-checkbox-checked'></i>Quotations</a></li> -->
