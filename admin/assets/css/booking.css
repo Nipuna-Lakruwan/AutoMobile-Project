@@ -111,3 +111,137 @@ h2 {
 .pagination-controls button:hover {
   background-color: #555; /* Slightly lighter background on hover */
 }
+
+/* General Modal Styling */
+#addBookingModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal content */
+.add-booking-modal .modal-content {
+  background-color: var(--light);
+  color: var(--dark);
+  margin: 10% auto; /* Adjust margin for better positioning */
+  padding: 15px; /* Reduce padding */
+  border: 1px solid #888;
+  width: 60%;
+  max-width: 600px;
+  max-height: 70vh; /* Limit height to 80% of the viewport height */
+  overflow-y: auto; /* Allow scrolling if content exceeds max height */
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* For spacing between form groups */
+.add-booking-modal .form-group {
+  margin-bottom: 20px; /* Increase spacing for better separation */
+}
+
+/* Style the Next button */
+#nextStepBtn {
+  background-color: darkred;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#nextStepBtn:hover {
+  background-color: #8b0000;
+}
+
+.add-booking-modal .modal-content.dark {
+  background-color: var(--grey);
+  color: var(--light);
+}
+
+.add-booking-modal .form-group {
+  margin-bottom: 15px;
+}
+
+/* Close Button */
+.close-button {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#addBookingModal .form-group {
+  margin-bottom: 15px;
+}
+
+#addBookingModal .form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#addBookingModal .form-group input,
+#addBookingModal .form-group textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+#addBookingModal #submitAddBookingForm {
+  background-color: darkred;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#addBookingModal .submit-btn:hover {
+  background-color: #8b0000;
+}
+
+/* Booking Details Modal Specific Styling */
+#viewCustomerModal1 .modal-content {
+  background-color: #f1f1f1;
+}
+
+#viewCustomerModal1 .customer-table-container-1 {
+  margin-top: 20px;
+}
+
+#viewCustomerModal1 .customer-details-table-1 {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#viewCustomerModal1 .customer-details-table-1 th,
+#viewCustomerModal1 .customer-details-table-1 td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#viewCustomerModal1 .close-modal-btn-1 {
+  background-color: #8b0000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#viewCustomerModal1 .close-modal-btn-1:hover {
+  background-color: #a00;
+}
