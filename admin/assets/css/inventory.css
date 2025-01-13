@@ -1,6 +1,9 @@
 body {
-  /*  background-color: #121212; Dark background for the whole page */
+  /* background-color: #121212; Dark background for the whole page */
   color: #e0e0e0; /* Light text color for readability */
+  font-family: 'Arial', sans-serif; /* Generic font for better appearance */
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -13,6 +16,8 @@ body {
 h2 {
   color: #ffffff; /* Light color for headings */
   margin-bottom: 20px;
+  font-size: 24px;
+  text-transform: uppercase;
 }
 
 .toolbar {
@@ -23,7 +28,7 @@ h2 {
 
 #searchBox {
   padding: 8px;
-  border: 1px solid darkred; 
+  border: 1px solid darkred;
   border-radius: 5px;
   width: 200px;
   background-color: #333; /* Dark background for input */
@@ -32,11 +37,16 @@ h2 {
 
 #newMeetingBtn {
   padding: 8px 16px;
-  background-color: darkred; 
+  background-color: darkred;
   color: #000; /* Dark text color for button */
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#newMeetingBtn:hover {
+  background-color: #ff6347; /* Hover effect for button */
 }
 
 .filters {
@@ -53,12 +63,19 @@ h2 {
   width: 150px;
   background-color: #333; /* Dark background for filters */
   color: #e0e0e0; /* Light text color for filters */
+  transition: border-color 0.3s ease;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: darkred;
+  outline: none;
 }
 
 #meetingsTable {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 400px;
+  margin-bottom: 40px;
 }
 
 #meetingsTable th,
@@ -73,8 +90,12 @@ h2 {
 }
 
 #meetingsTable a {
-  color: darkred; 
+  color: darkred;
   text-decoration: none;
+}
+
+#meetingsTable a:hover {
+  color: #ff6347; /* Hover effect for table links */
 }
 
 .pagination {
@@ -108,8 +129,213 @@ h2 {
   background-color: #444; /* Dark background for buttons */
   color: #e0e0e0; /* Light text color for buttons */
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .pagination-controls button:hover {
   background-color: #555; /* Slightly lighter background on hover */
+}
+
+/* General Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with some opacity */
+  padding-top: 60px;
+  animation: fadeIn 0.4s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #333;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 70%;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Close Button */
+.modal .close {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal .close:hover {
+  color: #ff6347; /* Bright red hover effect */
+}
+
+/* Modal Header */
+.modal-header {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 15px;
+}
+
+/* Modal Body */
+.modal-body {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #e0e0e0;
+  padding-bottom: 20px;
+  overflow-y: auto; /* Allow scrolling if content is too long */
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  padding-top: 15px;
+}
+
+/* Primary Action Button (e.g., Save, Confirm) */
+.modal-footer button.primary-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-footer button.primary-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* Secondary Action Button (e.g., Cancel) */
+.modal-footer button.secondary-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-footer button.secondary-btn:hover {
+  background-color: #e53935;
+  transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* Form Fields (for Edit and Add Modals) */
+.modal form input,
+.modal form select {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background-color: #444;
+  color: #e0e0e0;
+  font-size: 16px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.modal form input:focus,
+.modal form select:focus {
+  border-color: darkred; /* DarkRed border on focus */
+  outline: none;
+}
+
+.modal form textarea {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #888;
+  border-radius: 6px;
+  background-color: #444;
+  color: #e0e0e0;
+  font-size: 16px;
+  width: 100%;
+  resize: vertical; /* Allow resizing */
+  transition: border-color 0.3s ease;
+}
+
+.modal form textarea:focus {
+  border-color: darkred; /* DarkRed border on focus */
+  outline: none;
+}
+
+/* Success or Error Messages */
+.modal .message {
+  color: #ff6347; /* Red color for errors */
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Animation for Modal Appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional Specific Styles for Each Modal Type (View, Edit, Delete, etc.) */
+#viewModal .modal-content {
+  background-color: #2c2c2c;
+}
+
+#editModal .modal-content {
+  background-color: #282828;
+}
+
+#deleteModal .modal-content {
+  background-color: #2c2c2c;
+}
+
+#addItemModal .modal-content {
+  background-color: #333;
+}
+
+/* Header styles */
+#viewModal .modal-header,
+#editModal .modal-header,
+#deleteModal .modal-header,
+#addItemModal .modal-header {
+  color: #fff;
+}
+
+/* Footer button styles for specific modals */
+#editModal .modal-footer button.primary-btn {
+  background-color: #4CAF50; /* Green for Edit */
+}
+
+#deleteModal .modal-footer button.secondary-btn {
+  background-color: #f44336; /* Red for Delete */
+}
+
+#addItemModal .modal-footer button.primary-btn {
+  background-color: #009688; /* Teal for Add Item */
 }
