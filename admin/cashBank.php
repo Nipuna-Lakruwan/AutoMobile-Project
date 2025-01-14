@@ -27,8 +27,12 @@
       <?php include 'includes/navbar.php'; ?>
 
       <main>
+        <div class="header">
+          <div class="left">
+            <h1>Cash/Bank</h1>
+          </div>
+        </div>
         <div class="container">
-          <h2>Cash & Bank</h2>
           <div class="toolbar">
             <input type="text" id="searchBox" placeholder="Search..." />
             <button id="newMeetingBtn">+ New Transaction</button>
