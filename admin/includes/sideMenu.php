@@ -24,7 +24,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <li class="<?php echo ($currentPage == 'financial.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/financial.php"><i class='bx bx-briefcase'></i>Financial</a></li>
     <li class="<?php echo ($currentPage == 'humanResource.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/humanResource.php"><i class='bx bx-body'></i>Human Resource</a></li>
     <li class="<?php echo ($currentPage == 'reports.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/reports.php"><i class='bx bx-circle'></i>Reports</a></li>
-    <li class="<?php echo ($currentPage == 'administration.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/administration.php"><i class='bx bx-cog'></i>Administration</a></li>
+    <li class="<?php echo ($currentPage == 'administration.php') ? 'active' : ''; ?>"><a href="/AutoMobile Project/admin/administrtion.php"><i class='bx bx-cog'></i>Administration</a></li>
   </ul>
   <ul class="side-menu">
     <li>
