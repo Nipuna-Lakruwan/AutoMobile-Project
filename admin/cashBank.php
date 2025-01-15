@@ -78,7 +78,6 @@
             </thead>
             <tbody>
               <tr>
-              <tr>
                 <td>1</td>
                 <td>Deposit</td>
                 <td>Deposit</td>
@@ -87,12 +86,7 @@
                 <td>Colombo</td>
                 <td>John Doe</td>
                 <td>Approver 1</td>
-                <td>
-                  <button class="editBtn">Edit</button>
-                  <button class="deleteBtn">Delete</button>
-                </td>
-              </tr>
-              </tr>
+
               <!-- Add more rows as needed -->
             </tbody>
           </table>
