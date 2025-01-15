@@ -29,7 +29,7 @@
 
           <ul class="profile-dropdown-list">
             <li class="profile-dropdown-list-item">
-              <a href="pages/profile.html">
+              <a href="administrtion.php">
                 <i class="fa-regular fa-user"></i>
                 Edit Profile
               </a>
@@ -65,7 +65,7 @@
             <hr />
 
             <li class="profile-dropdown-list-item">
-              <a href="#">
+              <a href="/login.php">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 Log out
               </a>
