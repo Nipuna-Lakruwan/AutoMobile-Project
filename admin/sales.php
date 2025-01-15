@@ -83,9 +83,9 @@
         <div class="pagination">
           <span>Showing 1 to 1 of 1 total records</span>
           <select id="rowsPerPage">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="50">50</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="50">50</option>
             <option value="100">100</option>
             <!-- Add more options as needed -->
           </select>
@@ -99,44 +99,46 @@
     </main>
   </div><br><br>
 
-  <!-- Add New Sale Modal -->
+  <!-- Add New Vehicle Modal -->
   <div id="addVehicleModal" class="modal add-vehicle-modal">
     <div class="modal-content">
       <span class="close-button" id="closeAddVehicleModal">&times;</span>
       <h2>Add New Sale</h2>
       <form id="addVehicleForm">
-      <div class="form-group">
-          <label for="itemName">Vehicle Registration:</label>
-          <input type="text" id="serviceType" name="serviceType" required>
-        </div>
         <div class="form-group">
-          <label for="category">Customer Name:</label>
-          <input type="text" id="customerName" name="customerName" required>
-        </div>
-        <div class="form-group">
-          <label for="quantity">Service Type:</label>
+          <label for="vehicleRegistration">Vehicle Registration:</label>
           <input type="text" id="vehicleRegistration" name="vehicleRegistration" required>
         </div>
         <div class="form-group">
-          <label for="price">Service Date:</label>
-          <input type="date" id="serviceDate" name="serviceDate" required>
+          <label for="vehicleCustomerName">Customer Name:</label>
+          <input type="text" id="vehicleCustomerName" name="vehicleCustomerName" required>
         </div>
         <div class="form-group">
-          <label for="price">Cost:</label>
-          <input type="text" id="serviceCost" name="serviceCost" required>
+          <label for="serviceType">Service Type:</label>
+          <input type="text" id="vehicleManufacturer" name="serviceType" required>
+        </div>
+        <div class="form-group">
+          <label for="serviceDate">Service Date:</label>
+          <input type="date" id="vehicleModel" name="serviceDate" required>
+        </div>
+        <div class="form-group">
+          <label for="cost">Cost:</label>
+          <input type="number" id="vehicleFuelType" name="cost" required>
         </div>
         <div class="form-group">
           <label for="status">Status:</label>
           <select id="status" name="status" required>
+            <option value="Pending">Pending</option>
             <option value="Completed">Completed</option>
-            <option value="NotCompleted">Not Completed</option>
+            <option value="Cancelled">Cancelled</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="status">Mechanic Assigned:</label>
-          <select id="status" name="status" required>
-            <option value="Nipuna1">Nipuna 1</option>
-            <option value="Nipuna2">Nipuna 2</option>
+          <label for="mechanicAssigned">Mechanic Assigned:</label>
+          <select id="status" name="mechanicAssigned" required>
+            <option value="John Doe">John Doe</option>
+            <option value="Jane Doe">Jane Doe</option>
+            <option value="John Smith">John Smith</option>
           </select>
         </div>
         <button type="submit" id="submitAddVehicleForm">Add Sale</button>
@@ -144,11 +146,11 @@
     </div>
   </div>
 
-  <!-- Invoice Details Modal -->
+  <!-- Customer Details Modal -->
   <div id="viewCustomerModal1" class="modal customer-details-modal-1">
     <div class="modal-content">
       <span class="close-button" id="closeCustomerModal1">&times;</span>
-      <h2>Sales Details</h2>
+      <h2>Sale Details</h2>
       <div class="customer-table-container-1">
         <table class="customer-details-table-1" id="meetingsTable1">
           <thead>
@@ -160,31 +162,31 @@
           <tbody>
             <tr>
               <td>Sale ID</td>
-              <td id="itemId">SALE0001</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Vehicle Registration</td>
-              <td id="itemName">ABC 1234</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Customer Name</td>
-              <td id="customerName">John Doe</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Service Type</td>
-              <td id="serviceType">Car Wash</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Cost</td>
-              <td id="cost">Rs.5000</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Status</td>
-              <td id="status">Completed</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Mechanic Assigned</td>
-              <td id="price">John Doe</td>
+              <td id="customerName1">-</td>
             </tr>
           </tbody>
         </table>
@@ -197,6 +199,7 @@
 
   <script src="/AutoMobile Project/admin/assets/js/index.js"></script>
   <script src="/AutoMobile Project/admin/assets/js/vehicle.js"></script>
+  <script src="/AutoMobile Project/admin/assets/js/modals.js"></script>
 </body>
 
 </html>
