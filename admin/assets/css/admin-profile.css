@@ -1,0 +1,90 @@
+/* admin-profile.css */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#updateProfileForm {
+  
+  color: var(--dark);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid var(--dark-grey);
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: darkred;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: var(--primary); /* Dark red */
+  color: var(--dark);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  /* Softer red */
+  background-color: var(--light-primary);
+  color: var(--dark);
+}
+
+/* Profile Picture Styling */
+/* Centering Profile Picture */
+.profile-picture {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid darkred;
+  object-fit: cover;
+}
+
+/* Password Container */
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+}
+
+.toggle-password {
+  margin-left: 8px;
+  cursor: pointer;
+}
