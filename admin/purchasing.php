@@ -181,39 +181,39 @@
           <tbody>
             <tr>
               <td>ID</td>
-              <td id="itemId">1</td>
+              <td id="itemId">-</td>
             </tr>
             <tr>
               <td>Product Name</td>
-              <td id="itemName">Product 1</td>
+              <td id="itemName">-</td>
             </tr>
             <tr>
               <td>Supplier</td>
-              <td id="customerName">Supplier 1</td>
+              <td id="customerName">-</td>
             </tr>
             <tr>
               <td>Purchase Date</td>
-              <td id="serviceType">2022-01-01</td>
+              <td id="serviceType">-</td>
             </tr>
             <tr>
               <td>Delivery Date</td>
-              <td id="cost">2022-01-02</td>
+              <td id="cost">-</td>
             </tr>
             <tr>
               <td>Cost</td>
-              <td id="status">Rs.50000</td>
+              <td id="status">-</td>
             </tr>
             <tr>
               <td>Status</td>
-              <td id="price">Approved</td>
+              <td id="price">-</td>
             </tr>
             <tr>
               <td>Purchased By</td>
-              <td id="price">John Doe</td>
+              <td id="price">-</td>
             </tr>
             <tr>
               <td>Approved By</td>
-              <td id="price">Approver 1</td>
+              <td id="price">-</td>
             </tr>
           </tbody>
         </table>
