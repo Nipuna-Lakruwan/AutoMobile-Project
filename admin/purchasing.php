@@ -181,39 +181,39 @@
           <tbody>
             <tr>
               <td>ID</td>
-              <td id="itemId">-</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Product Name</td>
-              <td id="itemName">-</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Supplier</td>
-              <td id="customerName">-</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Purchase Date</td>
-              <td id="serviceType">-</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Delivery Date</td>
-              <td id="cost">-</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Cost</td>
-              <td id="status">-</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Status</td>
-              <td id="price">-</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Purchased By</td>
-              <td id="price">-</td>
+              <td id="customerName1">-</td>
             </tr>
             <tr>
               <td>Approved By</td>
-              <td id="price">-</td>
+              <td id="customerName1">-</td>
             </tr>
           </tbody>
         </table>
