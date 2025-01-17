@@ -74,6 +74,7 @@ include 'includes/navbar.php';
 </table>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/AutoMobile Project/Employee/assets/js/script.js"></script>
 <script>
     $(document).ready(function() {
         // Fetch and populate sort options
