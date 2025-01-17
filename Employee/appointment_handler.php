@@ -26,6 +26,12 @@ switch ($action) {
     case 'add_vehicle':
         addVehicle($conn);
         break;
+    case 'edit_appointment':
+        editAppointment($conn);
+        break;
+    case 'cancel_appointment':
+        cancelAppointment($conn);
+        break;
     default:
         echo json_encode(["status" => "error", "message" => "Invalid action"]);
 }
@@ -60,7 +66,7 @@ function getCustomerDetails($conn)
     echo json_encode(["status" => "success", "data" => $customer]);
 }
 
-// Search for vehicles (live suggestions)
+// Search for vehicles
 function searchVehicle($conn)
 {
     $searchTerm = $_POST['searchTerm'];
@@ -81,7 +87,11 @@ function searchVehicle($conn)
 function getVehicleDetails($conn)
 {
     $vehicleId = $_POST['vehicleId'];
-    $sql = "SELECT * FROM vehicle WHERE vehicle_id = ?";
+    $sql = "SELECT v.*, c.fname, c.lname, a.app_date, a.message as description 
+            FROM vehicle v 
+            JOIN customer c ON v.cus_id = c.cus_Id 
+            JOIN appointment a ON v.vehicle_id = a.vehicle_id 
+            WHERE v.vehicle_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $vehicleId);
     $stmt->execute();
@@ -90,68 +100,37 @@ function getVehicleDetails($conn)
     echo json_encode(["status" => "success", "data" => $vehicle]);
 }
 
-// Place an appointment
-function placeAppointment($conn)
+// Edit an appointment
+function editAppointment($conn)
 {
-    $customerId = $_POST['customerId'];
     $vehicleId = $_POST['vehicleId'];
     $appDate = $_POST['appDate'];
-    $appTime = $_POST['appTime'];
     $description = $_POST['description'];
 
-    $sql = "INSERT INTO appointment (cus_id, vehicle_id, app_date, app_time, message, status) 
-            VALUES (?, ?, ?, ?, ?, 'Pending')";
+    $sql = "UPDATE appointment SET app_date = ?, message = ? WHERE vehicle_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iisss", $customerId, $vehicleId, $appDate, $appTime, $description);
+    $stmt->bind_param("ssi", $appDate, $description, $vehicleId);
 
     if ($stmt->execute()) {
-        echo json_encode(["status" => "success", "message" => "Appointment placed successfully"]);
+        echo json_encode(["status" => "success", "message" => "Appointment updated successfully"]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Error placing appointment: " . $conn->error]);
+        echo json_encode(["status" => "error", "message" => "Error updating appointment: " . $conn->error]);
     }
 }
 
-// Add a new customer
-function addCustomer($conn)
+// Cancel an appointment
+function cancelAppointment($conn)
 {
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $mobile = $_POST['mobile'];
+    $vehicleId = $_POST['vehicleId'];
 
-    $sql = "INSERT INTO customer (fname, lname, email, phone, password) VALUES (?, ?, ?, ?, ?)";
+    $sql = "UPDATE appointment SET status = 'Cancelled' WHERE vehicle_id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $firstName, $lastName, $email, $mobile, $password);
+    $stmt->bind_param("i", $vehicleId);
 
     if ($stmt->execute()) {
-        echo json_encode(["status" => "success", "message" => "Customer added successfully", "customerId" => $stmt->insert_id]);
+        echo json_encode(["status" => "success", "message" => "Appointment cancelled successfully"]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Error adding customer: " . $conn->error]);
-    }
-}
-
-// Add a new vehicle
-function addVehicle($conn)
-{
-    $company = $_POST['company'];
-    $model = $_POST['model'];
-    $manufacturedYear = $_POST['manufacturedYear'];
-    $category = $_POST['category'];
-    $licensePlateNo = $_POST['licensePlateNo'];
-    $engineNo = $_POST['engineNo'];
-    $chassisNo = $_POST['chassisNo'];
-    $customerId = $_POST['customerId'];
-
-    $sql = "INSERT INTO vehicle (company, model, year, category, license_no, engine_no, chasis_no, cus_id) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssi", $company, $model, $manufacturedYear, $category, $licensePlateNo, $engineNo, $chassisNo, $customerId);
-
-    if ($stmt->execute()) {
-        echo json_encode(["status" => "success", "message" => "Vehicle added successfully", "vehicleId" => $stmt->insert_id]);
-    } else {
-        echo json_encode(["status" => "error", "message" => "Error adding vehicle: " . $conn->error]);
+        echo json_encode(["status" => "error", "message" => "Error cancelling appointment: " . $conn->error]);
     }
 }
 ?>
