@@ -51,6 +51,7 @@ include 'includes/navbar.php';
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/AutoMobile Project/Employee/assets/js/script.js"></script>
 <script>
   $(document).ready(function() {
     fetchInventoryRequests();
