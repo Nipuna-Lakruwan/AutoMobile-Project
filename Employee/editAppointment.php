@@ -52,18 +52,17 @@ include '../config/dbconnection.php';
             <label>Enter Vehicle Number</label>
             <div class="search-wrapper" style="position: relative;">
                 <input type="text" id="vehicleSearch" placeholder="Search...">
-
             </div>
             <ul id="vehicleSuggestions" class="suggestions"></ul>
         </div>
-        <form>
+        <form id="editAppointmentForm">
             <div class="form-group">
                 <label for="first-name">First Name</label>
-                <input type="text" id="first-name" name="first-name">
+                <input type="text" id="first-name" name="first-name" readonly>
             </div>
             <div class="form-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" name="last-name">
+                <input type="text" id="last-name" name="last-name" readonly>
             </div>
             <div class="form-group">
                 <label for="date">Date</label>
@@ -74,7 +73,7 @@ include '../config/dbconnection.php';
                 <textarea id="description" name="description" rows="4" cols="50"></textarea>
             </div>
             <input type="submit" value="Edit Appointment" class="submit">
-            <input type="submit" value="Cancel Appointment" class="submit">
+            <button type="button" id="cancelAppointmentBtn" class="submit">Cancel Appointment</button>
         </form>
     </div>
 </div>
@@ -121,6 +120,47 @@ include '../config/dbconnection.php';
             $("#vehicleSuggestions").hide();
         });
     }
+
+    // Handle form submission for editing appointment
+    $("#editAppointmentForm").on("submit", function(e) {
+        e.preventDefault();
+        const vehicleId = $("#vehicleSearch").data("vehicleId");
+        const appDate = $("#date").val();
+        const description = $("#description").val();
+
+        $.post("/AutoMobile Project/Employee/appointment_handler.php", {
+            action: "edit_appointment",
+            vehicleId,
+            appDate,
+            description
+        }, function(response) {
+            const data = JSON.parse(response);
+            if (data.status === "success") {
+                alert(data.message);
+                // Optionally, redirect to another page or reset the form
+            } else {
+                alert(data.message);
+            }
+        });
+    });
+
+    // Handle appointment cancellation
+    $("#cancelAppointmentBtn").on("click", function() {
+        const vehicleId = $("#vehicleSearch").data("vehicleId");
+
+        $.post("/AutoMobile Project/Employee/appointment_handler.php", {
+            action: "cancel_appointment",
+            vehicleId
+        }, function(response) {
+            const data = JSON.parse(response);
+            if (data.status === "success") {
+                alert(data.message);
+                // Optionally, redirect to another page or reset the form
+            } else {
+                alert(data.message);
+            }
+        });
+    });
 </script>
 </body>
 </html>
