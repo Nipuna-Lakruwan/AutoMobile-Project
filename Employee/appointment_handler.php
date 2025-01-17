@@ -64,10 +64,10 @@ function getCustomerDetails($conn)
 function searchVehicle($conn)
 {
     $searchTerm = $_POST['searchTerm'];
-    $sql = "SELECT vehicle_id, company, model, license_no FROM vehicle WHERE company LIKE ? OR model LIKE ? OR license_no LIKE ?";
+    $sql = "SELECT vehicle_id, company, model, license_no FROM vehicle WHERE license_no LIKE ?";
     $stmt = $conn->prepare($sql);
     $likeTerm = "%$searchTerm%";
-    $stmt->bind_param("sss", $likeTerm, $likeTerm, $likeTerm);
+    $stmt->bind_param("s", $likeTerm);
     $stmt->execute();
     $result = $stmt->get_result();
     $vehicles = [];
