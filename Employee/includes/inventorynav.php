@@ -27,6 +27,13 @@
             <p>Summary</p>
         </div>
     </button>
+
+    <button>
+        <div class="nav-item" onclick="redirectTo('pendingRequests.php')">
+            <i class="fa-solid fa-spinner fa-3x" style=" color: #ffffff;"></i>
+            <p>Pending</p>
+        </div>
+    </button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
