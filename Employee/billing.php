@@ -27,25 +27,26 @@ include '../config/dbconnection.php';
         <div class="search-bar">
             <div class="search-wrapper" style="position: relative;">
                 <input type="text" id="itemSearch" placeholder="Search item...">
+
             </div>
             <ul id="itemSuggestions" class="suggestions"></ul>
-
-            <table id="itemsTable">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Item ID</th>
-                        <th>Item Name</th>
-                        <th>Qty</th>
-                        <th>Price</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="itemsTableBody" class="hidden">
-                    <!-- Rows will be added dynamically here -->
-                </tbody>
-            </table>
         </div>
+
+        <table id="itemsTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Item ID</th>
+                    <th>Item Name</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="itemsTableBody" class="hidden">
+                <!-- Rows will be added dynamically here -->
+            </tbody>
+        </table>
     </div>
 
     <div class="line"></div>
@@ -105,6 +106,13 @@ include '../config/dbconnection.php';
         }
     });
 
+    // Hide suggestions when clicking outside
+    $(document).on("click", function(event) {
+        if (!$(event.target).closest("#itemSearch, #itemSuggestions").length) {
+            $("#itemSuggestions").hide();
+        }
+    });
+
     // Select item and add to items table
     function selectItem(itemId) {
         $.post("/AutoMobile Project/Employee/billing_handler.php", {
@@ -122,7 +130,7 @@ include '../config/dbconnection.php';
                         <td>
                             <div class="qty-buttons">
                                 <button onclick="decrementQty(this)">-</button>
-                                <input type="text" value="1" readonly>
+                                <input type="number" value="1" min="1" onchange="updateQty(this)">
                                 <button onclick="incrementQty(this)">+</button>
                             </div>
                         </td>
@@ -157,6 +165,16 @@ include '../config/dbconnection.php';
         }
     }
 
+    // Update quantity
+    function updateQty(input) {
+        let newQty = parseInt(input.value);
+        if (newQty < 1) {
+            newQty = 1;
+            input.value = 1;
+        }
+        updateSummary(input, newQty);
+    }
+
     // Add item to summary
     function addToSummary(itemId, itemName, qty, price) {
         summaryItems.push({ itemId, itemName, qty, price });
@@ -184,12 +202,11 @@ include '../config/dbconnection.php';
     }
 
     // Update summary when quantity changes
-    function updateSummary(button, newQty) {
-        const row = $(button).closest("tr");
+    function updateSummary(element, newQty) {
+        const row = $(element).closest("tr");
         const itemId = row.find("td:eq(1)").text();
         const item = summaryItems.find(item => item.itemId == itemId);
         item.qty = newQty;
-        row.find("input[type='text']").val(newQty); // Update the input field with new quantity
         updateSummaryTable();
     }
 
