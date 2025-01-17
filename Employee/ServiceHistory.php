@@ -32,18 +32,7 @@ include 'includes/navbar.php';
         <div class="custom-select">
             <select id="vehicleType" class="select">
                 <option value="">Select</option>
-                <option value="Audi">Audi</option>
-                <option value="BMW">BMW</option>
-                <option value="Citroen">Citroen</option>
-                <option value="Ford">Ford</option>
-                <option value="Honda">Honda</option>
-                <option value="Jaguar">Jaguar</option>
-                <option value="Land Rover">Land Rover</option>
-                <option value="Mercedes">Mercedes</option>
-                <option value="Mini">Mini</option>
-                <option value="Nissan">Nissan</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Volvo">Volvo</option>
+                <!-- Options will be populated dynamically -->
             </select>
         </div>
     </div>
@@ -52,10 +41,7 @@ include 'includes/navbar.php';
         <div class="custom-select">
             <select id="mechanic" class="select">
                 <option value="">Select</option>
-                <option value="Mechanic 1">Mechanic 1</option>
-                <option value="Mechanic 2">Mechanic 2</option>
-                <option value="Mechanic 3">Mechanic 3</option>
-                <option value="Mechanic 4">Mechanic 4</option>
+                <!-- Options will be populated dynamically -->
             </select>
         </div>
     </div>
@@ -65,9 +51,9 @@ include 'includes/navbar.php';
     </div>
 </div>
 
-<div class="searchbtn" onclick="fetchServiceHistory()">
+<!-- <div class="searchbtn" onclick="fetchServiceHistory()">
     Search
-</div>
+</div> -->
 
 <table>
     <thead>
@@ -88,8 +74,37 @@ include 'includes/navbar.php';
 </table>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/AutoMobile Project/Employee/assets/js/script.js"></script>
 <script>
+    $(document).ready(function() {
+        // Fetch and populate sort options
+        fetchSortOptions();
+
+        // Fetch and display all service history records by default
+        fetchServiceHistory();
+
+        // Add event listeners to update the results live when the filters are changed
+        $("#vehicleType, #mechanic, #date").on("change", function() {
+            fetchServiceHistory();
+        });
+    });
+
+    function fetchSortOptions() {
+        $.get("/AutoMobile Project/Employee/fetch_sort_options.php", function(response) {
+            const data = JSON.parse(response);
+            populateDropdown("#vehicleType", data.vehicleTypes);
+            populateDropdown("#mechanic", data.mechanics);
+        });
+    }
+
+    function populateDropdown(selector, options) {
+        const dropdown = $(selector);
+        dropdown.empty();
+        dropdown.append('<option value="">Select</option>');
+        options.forEach(option => {
+            dropdown.append(`<option value="${option}">${option}</option>`);
+        });
+    }
+
     function fetchServiceHistory() {
         const vehicleType = $("#vehicleType").val();
         const mechanic = $("#mechanic").val();
