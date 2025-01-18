@@ -21,4 +21,25 @@ echo json_encode([
     "vehicleTypes" => $vehicleTypes,
     "mechanics" => $mechanics
 ]);
+
+// Fetch categories
+$categories = [];
+$categoryQuery = "SELECT DISTINCT category FROM inventory";
+$categoryResult = $conn->query($categoryQuery);
+while ($row = $categoryResult->fetch_assoc()) {
+    $categories[] = $row['category'];
+}
+
+// Fetch item names
+$itemNames = [];
+$itemNameQuery = "SELECT DISTINCT item_name FROM inventory";
+$itemNameResult = $conn->query($itemNameQuery);
+while ($row = $itemNameResult->fetch_assoc()) {
+    $itemNames[] = $row['item_name'];
+}
+
+echo json_encode([
+    "categories" => $categories,
+    "itemNames" => $itemNames
+]);
 ?>
