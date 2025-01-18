@@ -1,0 +1,99 @@
+.cusName{
+    margin-top: 60px;
+    margin-left: 30px;
+}
+
+.underline{
+    width: 50%;
+    margin-right: auto;
+    margin-left: 30px;
+    margin-bottom: 50px;
+}
+
+.form-cus{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.form-group-cus {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 calc(50% - 15px);
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+.profile-pic img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+}
+
+.profile-pic{
+    display: flex;
+    margin-top: 40px;
+    padding-bottom: 40px;
+
+}
+
+.profile-pic img{
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.profile-pic .label-pp{
+    margin-top: 90px;
+    font-family: 'inter';
+}
+
+.btn-reset{
+    background-color: #000000;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-top: 30px;
+    width: 50%;
+    height: 40px;
+    font-size:medium;
+    cursor: pointer;
+}
+.btn-save{
+    background-color: #952b1a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-top: 30px;
+    width: 50%;
+    height: 40px;
+    font-size:medium;
+    cursor: pointer;
+}
+
+.profile-settings{
+   margin-left: 10%;
+   margin-right: 30%;
+}
+
+.makeAppointments h2{
+    margin-top: 40px;
+}
+
+.profile-settings h2{
+    margin-top: 40px;
+}  
+
+.pushright{
+    margin-left: 30px;
+}
+
+.address{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.additional {
+    margin-top: 40px;
+}
