@@ -25,25 +25,9 @@ include 'includes/navbar.php';
     <i class="fa-solid fa-user fa-10x" style="color: #952b1a;"></i>
     <h2>Search Customer</h2>
     <input type="text" id="customerSearch" placeholder="Search customer...">
-    <button type="submit" class="Search" onclick="searchCustomer()">Search</button>
 </div>
 
 <div id="searchResults"></div>
-
-<table id="customerDetailsTable" class="hidden">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-        </tr>
-    </thead>
-    <tbody id="customerDetailsBody">
-        <!-- Customer details will be populated here -->
-    </tbody>
-</table>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/AutoMobile Project/Employee/assets/js/script.js"></script>
@@ -56,12 +40,10 @@ include 'includes/navbar.php';
 
     function searchCustomer() {
         const searchQuery = $("#customerSearch").val();
-        $.post("/AutoMobile Project/Employee/search_customer.php", {
-            searchQuery
-        }, function(response) {
+        $.post("/AutoMobile Project/Employee/search_customer.php", { searchQuery }, function(response) {
             const data = JSON.parse(response);
             if (data.status === "success") {
-                let results = "";
+                let results = "<table><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Actions</th></tr>";
                 data.data.forEach((customer) => {
                     results += `<tr>
                                     <td>${customer.cus_Id}</td>
@@ -69,13 +51,13 @@ include 'includes/navbar.php';
                                     <td>${customer.lname}</td>
                                     <td>${customer.email}</td>
                                     <td>${customer.phone}</td>
+                                    <td><a href="customer2.php?customerId=${customer.cus_Id}" class="view-details-btn">View Details</a></td>
                                 </tr>`;
                 });
-                $("#customerDetailsBody").html(results);
-                $("#customerDetailsTable").removeClass('hidden');
+                results += "</table>";
+                $("#searchResults").html(results);
             } else {
-                $("#customerDetailsBody").html("<tr><td colspan='5'>No customers found</td></tr>");
-                $("#customerDetailsTable").removeClass('hidden');
+                $("#searchResults").html("<p>No customers found</p>");
             }
         });
     }
