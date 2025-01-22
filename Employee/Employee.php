@@ -30,26 +30,6 @@ include 'includes/navbar.php';
 
 <div id="searchResults"></div>
 
-<table id="employeeDetailsTable" class="hidden">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Profile Picture</th>
-            <th>Type</th>
-            <th>Role</th>
-            <th>Position</th>
-            <th>Address</th>
-        </tr>
-    </thead>
-    <tbody id="employeeDetailsBody">
-        <!-- Employee details will be populated here -->
-    </tbody>
-</table>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/AutoMobile Project/Employee/assets/js/script.js"></script>
 <script>
@@ -61,32 +41,24 @@ include 'includes/navbar.php';
 
     function searchEmployee() {
         const searchQuery = $("#employeeSearch").val();
-        $.post("/AutoMobile Project/Employee/search_employee.php", {
-            searchQuery
-        }, function(response) {
+        $.post("/AutoMobile Project/Employee/search_employee.php", { searchQuery }, function(response) {
             const data = JSON.parse(response);
             if (data.status === "success") {
-                let results = "";
+                let results = "<table><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Actions</th></tr>";
                 data.data.forEach((employee) => {
-                    const address = `${employee.address_no}, ${employee.street}, ${employee.city}, ${employee.district}, ${employee.zip_code}`;
                     results += `<tr>
                                     <td>${employee.officer_id}</td>
                                     <td>${employee.fname}</td>
                                     <td>${employee.lname}</td>
                                     <td>${employee.email}</td>
                                     <td>${employee.phone}</td>
-                                    <td><img src="/path/to/profile_pics/${employee.profile_pic}" alt="Profile Picture" width="50"></td>
-                                    <td>${employee.type}</td>
-                                    <td>${employee.role}</td>
-                                    <td>${employee.position}</td>
-                                    <td>${address}</td>
+                                    <td><a href="employeeInfo.php?employeeId=${employee.officer_id}" class="view-details-btn">View Details</a></td>
                                 </tr>`;
                 });
-                $("#employeeDetailsBody").html(results);
-                $("#employeeDetailsTable").removeClass('hidden');
+                results += "</table>";
+                $("#searchResults").html(results);
             } else {
-                $("#employeeDetailsBody").html("<tr><td colspan='10'>No employees found</td></tr>");
-                $("#employeeDetailsTable").removeClass('hidden');
+                $("#searchResults").html("<p>No employees found</p>");
             }
         });
     }
