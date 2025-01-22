@@ -10,7 +10,7 @@ include 'includes/navbar.php';
             <p style="margin-top: 10px">Appointments</p>
         </div>
 
-        <div class="item2" onclick="redirectTo('billing.php')">
+        <div class="item2" onclick="redirectTo('billingOptions.php')">
             <i class="fa-solid fa-file-invoice-dollar" style="font-size: 125px"></i>
             <p style="margin-top: 10px">Billing</p>
         </div>
@@ -28,11 +28,6 @@ include 'includes/navbar.php';
         <div class="item1" onclick="redirectTo('Employee.php')">
             <i class="fa-solid fa-id-card" style="font-size: 125px"></i>
             <p style="margin-top: 10px">Employees</p>
-        </div>
-
-        <div class="item2" onclick="redirectTo('InventoryLogin.php')">
-            <i class="fa-solid fa-boxes-stacked" style="font-size: 125px"></i>
-            <p style="margin-top: 10px">Inventory</p>
         </div>
     </div>
 </section>
