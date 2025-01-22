@@ -29,6 +29,10 @@ include 'includes/navbar.php';
             <i class="fa-solid fa-id-card" style="font-size: 125px"></i>
             <p style="margin-top: 10px">Employees</p>
         </div>
+        <div class="item2" onclick="redirectTo('InventoryLogin.php')">
+            <i class="fa-solid fa-boxes-stacked" style="font-size: 125px"></i>
+            <p style="margin-top: 10px">Inventory</p>
+        </div>
     </div>
 </section>
 
