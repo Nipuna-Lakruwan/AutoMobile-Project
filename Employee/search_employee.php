@@ -3,7 +3,7 @@ include '../config/dbconnection.php';
 
 $searchQuery = isset($_POST['searchQuery']) ? $_POST['searchQuery'] : '';
 
-$sql = "SELECT officer_id, fname, lname, email, phone, profile_pic, type, role, position, address_no, street, city, district, zip_code FROM officer 
+$sql = "SELECT officer_id, fname, lname, email, phone FROM officer 
         WHERE fname LIKE ? OR lname LIKE ? OR email LIKE ? OR phone LIKE ?";
 $stmt = $conn->prepare($sql);
 $likeTerm = "%$searchQuery%";
