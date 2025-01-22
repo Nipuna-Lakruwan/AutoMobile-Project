@@ -1,65 +1,35 @@
 <?php
 include '../config/dbconnection.php';
 
-// Determine the action from the AJAX request
-$action = isset($_POST['action']) ? $_POST['action'] : '';
+$action = $_POST['action'];
 
-switch ($action) {
-    case 'search_item':
-        searchItem($conn);
-        break;
-    case 'get_item_details':
-        getItemDetails($conn);
-        break;
-    default:
-        echo json_encode(["status" => "error", "message" => "Invalid action"]);
-}
-
-// Search for items (live suggestions)
-function searchItem($conn)
-{
+if ($action == 'search_item') {
     $searchTerm = $_POST['searchTerm'];
-    $sql = "SELECT item_id, item_name FROM inventory WHERE item_name LIKE ?";
-    $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        error_log("Prepare failed: (" . $conn->errno . ") " . $conn->error);
-        echo json_encode(["status" => "error", "message" => "Database error"]);
-        return;
-    }
-    $likeTerm = "%$searchTerm%";
-    $stmt->bind_param("s", $likeTerm);
-    if (!$stmt->execute()) {
-        error_log("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
-        echo json_encode(["status" => "error", "message" => "Database error"]);
-        return;
-    }
-    $result = $stmt->get_result();
+    $query = "SELECT * FROM inventory WHERE item_name LIKE '%$searchTerm%'";
+    $result = mysqli_query($conn, $query);
     $items = [];
-    while ($row = $result->fetch_assoc()) {
+    while ($row = mysqli_fetch_assoc($result)) {
         $items[] = $row;
     }
-    echo json_encode(["status" => "success", "data" => $items]);
-}
-
-// Get item details by ID
-function getItemDetails($conn)
-{
+    echo json_encode(['status' => 'success', 'data' => $items]);
+} elseif ($action == 'get_item_details') {
     $itemId = $_POST['itemId'];
-    $sql = "SELECT item_id, item_name, unit_price FROM inventory WHERE item_id = ?";
-    $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        error_log("Prepare failed: (" . $conn->errno . ") " . $conn->error);
-        echo json_encode(["status" => "error", "message" => "Database error"]);
-        return;
+    $query = "SELECT * FROM inventory WHERE item_id = $itemId";
+    $result = mysqli_query($conn, $query);
+    $item = mysqli_fetch_assoc($result);
+    echo json_encode(['status' => 'success', 'data' => $item]);
+} elseif ($action == 'checkout') {
+    $appId = $_POST['appId'];
+    $summaryItems = $_POST['summaryItems'];
+
+    // Process the billing and update the appointment status
+    $query = "UPDATE appointment SET status = 'Completed' WHERE app_id = $appId";
+    if (mysqli_query($conn, $query)) {
+        echo json_encode(['status' => 'success']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Failed to update appointment status']);
     }
-    $stmt->bind_param("i", $itemId);
-    if (!$stmt->execute()) {
-        error_log("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
-        echo json_encode(["status" => "error", "message" => "Database error"]);
-        return;
-    }
-    $result = $stmt->get_result();
-    $item = $result->fetch_assoc();
-    echo json_encode(["status" => "success", "data" => $item]);
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Invalid action']);
 }
 ?>
