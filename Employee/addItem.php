@@ -34,9 +34,7 @@ include 'includes/navbar.php';
             <form id="addItemForm">
                 <div class="form-group">
                     <label for="itemName">Item Name</label>
-                    <select id="itemName" name="itemName">
-                        <!-- Options will be populated dynamically -->
-                    </select>
+                    <input type="text" id="itemName" name="itemName" required>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
@@ -44,9 +42,7 @@ include 'includes/navbar.php';
                 </div>
                 <div class="form-group">
                     <label for="brandName">Brand Name</label>
-                    <select id="brandName" name="brandName">
-                        <!-- Options will be populated dynamically -->
-                    </select>
+                    <input type="text" id="brandName" name="brandName" required>
                 </div>
                 <div class="form-group">
                     <label for="itemqty">Item Quantity</label>
@@ -70,12 +66,6 @@ include 'includes/navbar.php';
 <script src="/AutoMobile Project/Employee/assets/js/script.js"></script>
 <script>
     $(document).ready(function() {
-        fetchItemOptions();
-
-        $("#itemName, #brandName").on("change", function() {
-            fetchItemDetails();
-        });
-
         $("#addItemForm").on("submit", function(e) {
             e.preventDefault();
             const formData = $(this).serialize();
@@ -92,40 +82,6 @@ include 'includes/navbar.php';
             });
         });
     });
-
-    function fetchItemOptions() {
-        $.get("/AutoMobile Project/Employee/fetch_item_options.php", function(response) {
-            const data = JSON.parse(response);
-            populateDropdown("#itemName", data.itemNames);
-            populateDropdown("#brandName", data.brandNames);
-        });
-    }
-
-    function fetchItemDetails() {
-        const itemName = $("#itemName").val();
-        const brandName = $("#brandName").val();
-        if (itemName && brandName) {
-            $.post("/AutoMobile Project/Employee/fetch_item_details.php", { itemName, brandName }, function(response) {
-                const data = JSON.parse(response);
-                if (data.status === "success") {
-                    $("#itemqty").val(data.data.quantity);
-                    $("#byingPrice").val(data.data.unit_buying_price);
-                    $("#sellingPrice").val(data.data.unit_price);
-                } else {
-                    showAlert(data.message, "error");
-                }
-            });
-        }
-    }
-
-    function populateDropdown(selector, options) {
-        const dropdown = $(selector);
-        dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
-        options.forEach(option => {
-            dropdown.append(`<option value="${option}">${option}</option>`);
-        });
-    }
 
     function showAlert(message, type) {
         const alertBox = document.createElement("div");
