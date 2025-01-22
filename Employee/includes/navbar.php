@@ -2,13 +2,6 @@
     <div class="content">
         <!-- Navbar -->
         <nav>
-            <!-- <i class='bx bx-menu'></i> -->
-            <!--<form action="#">
-                <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
-                </div>
-            </form>-->
             <div class="logo-container">
                 <img src="/AutoMobile Project/Employee/assets/img/logo.png" alt="Cras Auto">
             </div>
@@ -20,48 +13,48 @@
             </a>
             <div class="profile-dropdown">
                 <div onclick="toggle()" class="profile-dropdown-btn">
-                    <div class="profile-img" style="background: url('/AutoMobile Project/Employee/assets/img/default.jpg');  background-size: cover;">
+                    <div class="profile-img" style="background: url('<?php echo $_SESSION['auth_user']['profile_pic']; ?>'); background-size: cover;">
                         <i class="fa-solid fa-circle"></i>
                     </div>
                     <span>
-                        Nipuna
+                        <?php echo $_SESSION['auth_user']['fname']; ?>
                         <i class="fa-solid fa-angle-down" style="margin: 0 0 0 10px;"></i>
                     </span>
                 </div>
                 <ul class="profile-dropdown-list">
                     <li class="profile-dropdown-list-item">
-                        <a href="pages/profile.html">
+                        <a href="/AutoMobile Project/Employee/profile.php">
                             <i class="fa-regular fa-user"></i>
                             Edit Profile
                         </a>
                     </li>
-                    <li class="profile-dropdown-list-item">
+                    <!-- <li class="profile-dropdown-list-item">
                         <a href="#">
                             <i class="fa-regular fa-envelope"></i>
                             Inbox
                         </a>
-                    </li>
-                    <li class="profile-dropdown-list-item">
+                    </li> -->
+                    <!-- <li class="profile-dropdown-list-item">
                         <a href="/AutoMobile Project/admin/dashboard.php">
                             <i class="fa-solid fa-chart-line"></i>
                             Analytics
                         </a>
-                    </li>
-                    <li class="profile-dropdown-list-item">
+                    </li> -->
+                    <!-- <li class="profile-dropdown-list-item">
                         <a href="#">
                             <i class="fa-solid fa-sliders"></i>
                             Settings
                         </a>
-                    </li>
-                    <li class="profile-dropdown-list-item">
+                    </li> -->
+                    <!-- <li class="profile-dropdown-list-item">
                         <a href="#">
                             <i class="fa-regular fa-circle-question"></i>
                             Help & Support
                         </a>
-                    </li>
+                    </li> -->
                     <hr />
                     <li class="profile-dropdown-list-item">
-                        <a href="/AutoMobile Project/admin/logout.php">
+                        <a href="/AutoMobile Project/Employee/logout.php">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                             Log out
                         </a>
@@ -71,3 +64,4 @@
         </nav>
         <!-- End of Navbar -->
     </div>
+</body>
