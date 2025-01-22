@@ -1,11 +1,11 @@
 <div class="navbar">
-    <button>
+    <!-- <button>
         <div class="nav-item" onclick="redirectTo('inventory.php')">
             <div class="badge" id="requestCount">0</div>
             <i class="fa-solid fa-message fa-3x" style=" color: #ffffff;"></i>
             <p>Requests</p>
         </div>
-    </button>
+    </button> -->
 
     <button>
         <div class="nav-item" onclick="redirectTo('addItem.php')">
@@ -28,12 +28,12 @@
         </div>
     </button>
 
-    <button>
+    <!-- <button>
         <div class="nav-item" onclick="redirectTo('pendingRequests.php')">
             <i class="fa-solid fa-spinner fa-3x" style=" color: #ffffff;"></i>
             <p>Pending</p>
         </div>
-    </button>
+    </button> -->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
