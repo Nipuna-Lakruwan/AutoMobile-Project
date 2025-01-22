@@ -74,22 +74,24 @@ include 'includes/navbar.php';
                 <button class="searchbtn" onclick="fetchInventorySummary()">Search</button>
             </div>
 
-            <table id="inventoryTable">
-                <thead>
-                    <tr>
-                        <th>Item ID</th>
-                        <th>Item Name</th>
-                        <th>Brand Name</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Buying Price</th>
-                        <th>Selling Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Rows will be added dynamically here -->
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table id="inventoryTable">
+                    <thead>
+                        <tr>
+                            <th>Item ID</th>
+                            <th>Item Name</th>
+                            <th>Brand Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Buying Price</th>
+                            <th>Selling Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be added dynamically here -->
+                    </tbody>
+                </table>
+            </div>
 
             <button class="submit" onclick="redirectTo('editItem.php')">Edit Item</button>
         </div>
@@ -121,6 +123,11 @@ include 'includes/navbar.php';
 </div>
 
 <style>
+    .table-container {
+        max-height: 400px; /* Adjust the height as needed */
+        overflow-y: auto;
+    }
+
     .suggestions {
         position: absolute;
         background-color: white;
@@ -140,63 +147,6 @@ include 'includes/navbar.php';
 
     .suggestions li:hover {
         background-color: #f0f0f0;
-    }
-
-    .custom-select {
-        position: relative;
-        font-family: Arial;
-    }
-
-    .custom-select select {
-        display: none; /*hide original SELECT element:*/
-    }
-
-    .select-selected {
-        background-color: #333;
-        color: #e0e0e0;
-        padding: 8px 16px;
-        border: 1px solid darkred;
-        border-radius: 5px;
-        cursor: pointer;
-        user-select: none;
-    }
-
-    .select-selected:after {
-        position: absolute;
-        content: "";
-        top: 14px;
-        right: 10px;
-        width: 0;
-        height: 0;
-        border: 6px solid transparent;
-        border-color: #fff transparent transparent transparent;
-    }
-
-    .select-selected.select-arrow-active:after {
-        border-color: transparent transparent #fff transparent;
-        top: 7px;
-    }
-
-    .select-items {
-        position: absolute;
-        background-color: #333;
-        top: 100%;
-        left: 0;
-        right: 0;
-        z-index: 99;
-        border: 1px solid darkred;
-        border-radius: 5px;
-    }
-
-    .select-items div {
-        color: #e0e0e0;
-        padding: 8px 16px;
-        cursor: pointer;
-        user-select: none;
-    }
-
-    .select-items div:hover, .same-as-selected {
-        background-color: rgba(255, 255, 255, 0.1);
     }
 
     .modal {
@@ -347,34 +297,14 @@ include 'includes/navbar.php';
         $("#lowStockModal").hide();
     }
 
-    function populateDropdown(selector, options) {
+    function populateDropdown(selector, items) {
         const dropdown = $(selector);
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
-        options.forEach(option => {
-            dropdown.append(`<option value="${option}">${option}</option>`);
+        items.forEach((item) => {
+            dropdown.append(`<option value="${item}">${item}</option>`);
         });
     }
 </script>
-
-<style>
-    .alert {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px;
-        border-radius: 5px;
-        z-index: 1000;
-        color: #fff;
-        font-size: 16px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .alert.success {
-        background-color: #4CAF50;
-    }
-    .alert.error {
-        background-color: #f44336;
-    }
-</style>
 </body>
 </html>
