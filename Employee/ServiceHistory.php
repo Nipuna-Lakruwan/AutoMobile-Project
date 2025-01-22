@@ -51,10 +51,6 @@ include 'includes/navbar.php';
     </div>
 </div>
 
-<!-- <div class="searchbtn" onclick="fetchServiceHistory()">
-    Search
-</div> -->
-
 <table>
     <thead>
         <tr>
