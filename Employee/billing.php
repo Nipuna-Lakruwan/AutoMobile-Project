@@ -2,13 +2,15 @@
 include 'includes/header.php';
 include 'includes/navbar.php';
 include '../config/dbconnection.php';
+
+$appId = isset($_GET['appId']) ? $_GET['appId'] : null;
 ?>
 
 <link rel="stylesheet" href="/AutoMobile Project/Employee/assets/css/billing.css">
 
 <div class="navcontainer">
     <div class="item back">
-        <h2 class="clickable" onclick="redirectTo('home.php')">
+        <h2 class="clickable" onclick="redirectTo('billingOptions.php')">
             <i class="fa-solid fa-chevron-left fa-lg" style="color: #952B1A;"></i>
             Back
         </h2>
@@ -27,7 +29,6 @@ include '../config/dbconnection.php';
         <div class="search-bar">
             <div class="search-wrapper" style="position: relative;">
                 <input type="text" id="itemSearch" placeholder="Search item...">
-
             </div>
             <ul id="itemSuggestions" class="suggestions"></ul>
         </div>
@@ -68,7 +69,7 @@ include '../config/dbconnection.php';
             </table>
             <hr>
             <div class="total">Rs. 0.00</div>
-            <a href="#" class="checkout-btn">Checkout</a>
+            <a href="#" class="checkout-btn" onclick="checkout()">Checkout</a>
         </div>
     </div>
 </div>
@@ -83,6 +84,7 @@ include '../config/dbconnection.php';
 <script src="/AutoMobile Project/Employee/assets/js/script.js"></script>
 <script>
     let summaryItems = [];
+    const appId = "<?php echo $appId; ?>";
 
     // Search for items
     $("#itemSearch").on("input", function() {
@@ -220,6 +222,27 @@ include '../config/dbconnection.php';
             $("#itemsTableBody").addClass('hidden');
         }
         updateSummaryTable();
+    }
+
+    // Checkout and update appointment status
+    function checkout() {
+        if (appId) {
+            $.post("/AutoMobile Project/Employee/billing_handler.php", {
+                action: "checkout",
+                appId,
+                summaryItems
+            }, function(response) {
+                const data = JSON.parse(response);
+                if (data.status === "success") {
+                    alert("Checkout successful!");
+                    window.location.href = 'pendingAppointments.php';
+                } else {
+                    alert("Checkout failed: " + data.message);
+                }
+            });
+        } else {
+            alert("No appointment selected for billing.");
+        }
     }
 </script>
 </body>
