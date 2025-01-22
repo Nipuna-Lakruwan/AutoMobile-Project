@@ -191,25 +191,5 @@ include 'includes/navbar.php';
         }, 3000);
     }
 </script>
-
-<style>
-    .alert {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px;
-        border-radius: 5px;
-        z-index: 1000;
-        color: #fff;
-        font-size: 16px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .alert.success {
-        background-color: #4CAF50;
-    }
-    .alert.error {
-        background-color: #f44336;
-    }
-</style>
 </body>
 </html>
