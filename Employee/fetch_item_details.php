@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $brandName = $_POST['brandName'];
 
     // Prepare the SQL statement
-    $sql = "SELECT item_id, quantity, unit_buying_price, unit_price FROM inventory WHERE item_name = ? AND brand = ?";
+    $sql = "SELECT item_id, category, quantity, unit_buying_price, unit_price FROM inventory WHERE item_name = ? AND brand = ?";
     $stmt = $conn->prepare($sql);
     if ($stmt) {
         $stmt->bind_param("ss", $itemName, $brandName);
@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo json_encode(["status" => "error", "message" => "Error preparing statement: " . $conn->error]);
     }
-    $conn->close();
 } else {
     echo json_encode(["status" => "error", "message" => "Invalid request method"]);
 }
