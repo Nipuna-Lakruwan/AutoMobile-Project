@@ -21,13 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($stmt->execute()) {
             echo json_encode(["status" => "success", "message" => "Item added successfully"]);
         } else {
-            echo json_encode(["status" => "error", "message" => "Error adding item: " . $stmt->error]);
+            echo json_encode(["status" => "error", "message" => "Error adding item"]);
         }
-        $stmt->close();
     } else {
-        echo json_encode(["status" => "error", "message" => "Error preparing statement: " . $conn->error]);
+        echo json_encode(["status" => "error", "message" => "Error preparing statement"]);
     }
-    $conn->close();
 } else {
     echo json_encode(["status" => "error", "message" => "Invalid request method"]);
 }
