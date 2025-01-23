@@ -1,117 +1,127 @@
-// Variables
-var slides = document.querySelectorAll('.slide');
-var rbtn = document.querySelectorAll('.rad-btn');
-var leftArrow = document.querySelector('.left');
-var rightArrow = document.querySelector('.right');
-var slideInt; // Interval ID
-var intTime = 6000; // Interval duration
+class Slider {
+    constructor(slidesSelector, rbtnSelector, leftArrowSelector, rightArrowSelector, intervalTime) {
+        this.slides = document.querySelectorAll(slidesSelector);
+        this.rbtn = document.querySelectorAll(rbtnSelector);
+        this.leftArrow = document.querySelector(leftArrowSelector);
+        this.rightArrow = document.querySelector(rightArrowSelector);
+        this.intervalTime = intervalTime;
+        this.slideInt = null;
+        this.init();
+    }
 
-// Function to change to the next slide
-function nextSlide() {
-    var curr = document.querySelector('.curr');
-    var active = document.querySelector('.active');
+    init() {
+        if (this.slides.length > 0) {
+            this.slideInt = setInterval(() => this.nextSlide(), this.intervalTime);
+            this.addEventListeners();
+        }
+    }
 
-    if (!curr || !active) return; // Ensure elements exist
+    nextSlide() {
+        const curr = document.querySelector('.curr');
+        const active = document.querySelector('.active');
 
-    // Unset current slide and active button
-    curr.classList.remove('curr');
-    active.classList.remove('active');
+        if (!curr || !active) return;
 
-    // Set the next slide and button
-    if (curr.nextElementSibling && curr.nextElementSibling.classList.contains('slide')) {
-        curr.nextElementSibling.classList.add('curr');
-        active.nextElementSibling.classList.add('active');
-    } else {
-        slides[0].classList.add('curr');
-        rbtn[0].classList.add('active');
+        curr.classList.remove('curr');
+        active.classList.remove('active');
+
+        if (curr.nextElementSibling && curr.nextElementSibling.classList.contains('slide')) {
+            curr.nextElementSibling.classList.add('curr');
+            active.nextElementSibling.classList.add('active');
+        } else {
+            this.slides[0].classList.add('curr');
+            this.rbtn[0].classList.add('active');
+        }
+    }
+
+    prevSlide() {
+        const curr = document.querySelector('.curr');
+        const active = document.querySelector('.active');
+
+        if (!curr || !active) return;
+
+        curr.classList.remove('curr');
+        active.classList.remove('active');
+
+        if (curr.previousElementSibling && curr.previousElementSibling.classList.contains('slide')) {
+            curr.previousElementSibling.classList.add('curr');
+            active.previousElementSibling.classList.add('active');
+        } else {
+            this.slides[this.slides.length - 1].classList.add('curr');
+            this.rbtn[this.rbtn.length - 1].classList.add('active');
+        }
+    }
+
+    addEventListeners() {
+        if (this.leftArrow) {
+            this.leftArrow.addEventListener('click', () => {
+                clearInterval(this.slideInt);
+                this.prevSlide();
+                this.slideInt = setInterval(() => this.nextSlide(), this.intervalTime);
+            });
+        }
+
+        if (this.rightArrow) {
+            this.rightArrow.addEventListener('click', () => {
+                clearInterval(this.slideInt);
+                this.nextSlide();
+                this.slideInt = setInterval(() => this.nextSlide(), this.intervalTime);
+            });
+        }
+
+        if (this.rbtn.length > 0) {
+            this.rbtn.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    clearInterval(this.slideInt);
+
+                    const curr = document.querySelector('.curr');
+                    const active = document.querySelector('.active');
+
+                    if (curr) curr.classList.remove('curr');
+                    if (active) active.classList.remove('active');
+
+                    this.slides[index].classList.add('curr');
+                    button.classList.add('active');
+
+                    this.slideInt = setInterval(() => this.nextSlide(), this.intervalTime);
+                });
+            });
+        }
     }
 }
 
-// Function to change to the previous slide
-function prevSlide() {
-    var curr = document.querySelector('.curr');
-    var active = document.querySelector('.active');
-
-    if (!curr || !active) return; // Ensure elements exist
-
-    // Unset current slide and active button
-    curr.classList.remove('curr');
-    active.classList.remove('active');
-
-    // Set the previous slide and button
-    if (curr.previousElementSibling && curr.previousElementSibling.classList.contains('slide')) {
-        curr.previousElementSibling.classList.add('curr');
-        active.previousElementSibling.classList.add('active');
-    } else {
-        slides[slides.length - 1].classList.add('curr');
-        rbtn[rbtn.length - 1].classList.add('active');
+class AutoIncrementNumbers {
+    constructor(selector, interval) {
+        this.valueDisplays = document.querySelectorAll(selector);
+        this.interval = interval;
+        this.init();
     }
-}
 
-// Add event listeners for arrows
-if (leftArrow) {
-    leftArrow.addEventListener('click', function () {
-        clearInterval(slideInt); // Stop automatic sliding
-        prevSlide(); // Show previous slide
-        slideInt = setInterval(nextSlide, intTime); // Restart automatic sliding
-    });
-}
+    init() {
+        if (this.valueDisplays.length > 0) {
+            this.valueDisplays.forEach((valueDisplay) => {
+                this.incrementValue(valueDisplay);
+            });
+        }
+    }
 
-if (rightArrow) {
-    rightArrow.addEventListener('click', function () {
-        clearInterval(slideInt); // Stop automatic sliding
-        nextSlide(); // Show next slide
-        slideInt = setInterval(nextSlide, intTime); // Restart automatic sliding
-    });
-}
-
-// Add event listeners for radio buttons
-if (rbtn.length > 0) {
-    rbtn.forEach((button, index) => {
-        button.addEventListener('click', function () {
-            clearInterval(slideInt); // Stop automatic sliding
-
-            // Unset current slide and active button
-            let curr = document.querySelector('.curr');
-            let active = document.querySelector('.active');
-
-            if (curr) curr.classList.remove('curr');
-            if (active) active.classList.remove('active');
-
-            // Set the clicked slide and button as active
-            slides[index].classList.add('curr');
-            button.classList.add('active');
-
-            slideInt = setInterval(nextSlide, intTime); // Restart automatic sliding
-        });
-    });
-}
-
-// Automatic Slide Change
-if (slides.length > 0) {
-    slideInt = setInterval(nextSlide, intTime);
-}
-
-// Auto Increment Numbers
-let valueDisplay = document.querySelectorAll('.num');
-let Interval = 2000;
-
-if (valueDisplay.length > 0) {
-    valueDisplay.forEach((valueDisplay) => {
+    incrementValue(valueDisplay) {
         let startValue = 0;
-        let endValue = parseInt(valueDisplay.getAttribute('data-val')) || 0; // Handle invalid data-val
-        let duration = Math.floor(Interval / endValue);
+        let endValue = parseInt(valueDisplay.getAttribute('data-val')) || 0;
+        let duration = Math.floor(this.interval / endValue);
 
-        let interval = setInterval(function () {
+        let interval = setInterval(() => {
             startValue += 1;
             valueDisplay.textContent = startValue + "+"; // Add "+" if necessary
-            if (startValue == endValue) {
-                clearInterval(interval); // Use 'interval' instead of 'counter'
+            if (startValue === endValue) {
+                clearInterval(interval);
             }
         }, duration);
-    });
+    }
 }
 
-
-
-
+// Initialize the Slider class
+document.addEventListener('DOMContentLoaded', () => {
+    new Slider('.slide', '.rad-btn', '.left', '.right', 6000);
+    new AutoIncrementNumbers('.num', 2000);
+});
