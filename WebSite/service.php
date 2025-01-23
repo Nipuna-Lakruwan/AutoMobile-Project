@@ -67,8 +67,10 @@
         <div class="touchDis">
              <h1>Get in Touch with our experts</h1>
             <p>Our experts are here to assist you with any questions or concerns. Contact us today to experience professional, reliable service tailored to your needs.</p>
-            <button>
-                <i class="fa-solid fa-phone"></i> GET IN TOUCH WITH US</button>
+            <!-- add Number in here -->
+            <button onclick="window.location.href='tel:+1234567890'">  
+                <i class="fa-solid fa-phone"></i> GET IN TOUCH WITH US
+            </button>
         </div>
 </div>
 
