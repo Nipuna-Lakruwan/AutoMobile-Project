@@ -20,13 +20,13 @@
         <div class="signUp">
             <h2>Sign-up Today</h2>
             <p>Become a valued part of our community. Sign up now to access personalized appointments, exclusive offers, and timely updates tailored just for you.</p>
-            <button>Sign-up</butto>
+            <button onclick="window.location.href='/AutoMobile Project/login.php'">Sign-up</button>
         </div>
         
         <div class="hotLine">
             <h2>Our hotline</h2>
             <p>Call us at 011-1234567</p>
-            <button><i class="fa-solid fa-phone"></i> &nbsp Call Now</button>
+            <button onclick="window.location.href='tel:+1234567890'"><i class="fa-solid fa-phone"></i> &nbsp Call Now</button>
         </div>
     </div>
 </div>
