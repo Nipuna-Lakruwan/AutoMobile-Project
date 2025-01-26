@@ -2,6 +2,8 @@
 include '../config/dbconnection.php';
 
 $date = isset($_POST['date']) ? $_POST['date'] : '';
+$startDate = isset($_POST['startDate']) ? $_POST['startDate'] : '';
+$endDate = isset($_POST['endDate']) ? $_POST['endDate'] : '';
 $searchQuery = isset($_POST['searchQuery']) ? $_POST['searchQuery'] : '';
 
 $sql = "SELECT a.app_id, a.app_date, a.app_time, a.status, a.activity_type, a.message, o.fname, o.lname, v.license_no, v.model 
@@ -19,6 +21,13 @@ if (!empty($date)) {
     $types .= 's';
 }
 
+if (!empty($startDate) && !empty($endDate)) {
+    $sql .= " AND a.app_date BETWEEN ? AND ?";
+    $params[] = $startDate;
+    $params[] = $endDate;
+    $types .= 'ss';
+}
+
 if (!empty($searchQuery)) {
     $sql .= " AND (o.fname LIKE ? OR o.lname LIKE ?)";
     $likeTerm = "%$searchQuery%";
@@ -28,7 +37,9 @@ if (!empty($searchQuery)) {
 }
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param($types, ...$params);
+if ($types) {
+    $stmt->bind_param($types, ...$params);
+}
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -37,5 +48,5 @@ while ($row = $result->fetch_assoc()) {
     $appointments[] = $row;
 }
 
-echo json_encode(["status" => "success", "data" => $appointments]);
+echo json_encode(["status" => "success", "data" => $appointments, "appointments" => array_column($appointments, 'app_date')]);
 ?>
