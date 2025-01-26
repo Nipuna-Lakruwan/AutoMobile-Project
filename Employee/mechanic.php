@@ -36,6 +36,7 @@ include 'includes/navbar.php';
     text-align: center;
     padding: 10px;
     border-radius: 5px;
+    position: relative; /* Ensure relative positioning for the dot */
 }
 
 .calendar .days .today {
@@ -72,6 +73,17 @@ include 'includes/navbar.php';
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.appointment-dot {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #8c0e0e;
+    border-radius: 50%;
 }
 </style>
 
@@ -144,21 +156,25 @@ include 'includes/navbar.php';
     $(document).ready(function() {
         initCalendar();
 
+        // Event listener for clicking on a day to fetch appointments
         $(document).on("click", ".day", function() {
             const selectedDate = $(this).data("date");
             fetchAppointments(selectedDate);
         });
 
+        // Event listener for search input to fetch appointments based on search query
         $("#mechanicSearch").on("input", function() {
             searchMechanic();
         });
     });
 
+    // Function to search for mechanics based on input
     function searchMechanic() {
         const searchQuery = $("#mechanicSearch").val();
         fetchAppointments(null, searchQuery);
     }
 
+    // Function to fetch appointments from the server
     function fetchAppointments(date, searchQuery = '') {
         $.post("/AutoMobile Project/Employee/fetch_appointments.php", {
             date,
@@ -180,7 +196,7 @@ include 'includes/navbar.php';
                                         <td>${appointment.app_time}</td>
                                         <td>${appointment.activity_type}</td>
                                         <td>${appointment.status}</td>
-                                        <td class="view-more">View more</td>
+                                        
                                     </tr>
                                 </table>
                             </div>
@@ -191,6 +207,10 @@ include 'includes/navbar.php';
                 $(".accordion-header").on("click", function() {
                     $(this).next(".accordion-content").toggle();
                 });
+
+                // Mark days with appointments
+                const appointmentDates = data.data.map(app => app.app_date);
+                markAppointmentDays(appointmentDates);
             } else {
                 $("#accordionMechanics").html("<p>No appointments found</p>");
             }
@@ -218,6 +238,7 @@ include 'includes/navbar.php';
         "September", "October", "November", "December"
     ];
 
+    // Function to initialize the calendar
     function initCalendar() {
         const firstDay = new Date(year, month, 1);
         const lastDay = new Date(year, month + 1, 0);
@@ -231,10 +252,12 @@ include 'includes/navbar.php';
 
         let days = "";
 
+        // Add previous month's days
         for (let x = day; x > 0; x--) {
             days += `<div class="day prev-date">${prevDays - x + 1}</div>`;
         }
 
+        // Add current month's days
         for (let i = 1; i <= lastDate; i++) {
             if (i === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
                 activeDay = i;
@@ -246,14 +269,17 @@ include 'includes/navbar.php';
             }
         }
 
+        // Add next month's days
         for (let j = 1; j <= nextDays; j++) {
             days += `<div class="day next-date" data-date="${year}-${month + 1}-${j}">${j}</div>`;
         }
 
         daysContainer.innerHTML = days;
         addListner();
+        fetchAppointmentsForMonth();
     }
 
+    // Function to go to the previous month
     function prevMonth() {
         month--;
         if (month < 0) {
@@ -263,6 +289,7 @@ include 'includes/navbar.php';
         initCalendar();
     }
 
+    // Function to go to the next month
     function nextMonth() {
         month++;
         if (month > 11) {
@@ -299,6 +326,7 @@ include 'includes/navbar.php';
 
     gotoBtn.addEventListener("click", gotoDate);
 
+    // Function to go to a specific date
     function gotoDate() {
         const dateArr = dateInput.value.split("/");
         if (dateArr.length === 2) {
@@ -312,6 +340,7 @@ include 'includes/navbar.php';
         alert("Invalid Date");
     }
 
+    // Function to add event listeners to the days
     function addListner() {
         const days = document.querySelectorAll(".day");
         days.forEach(day => {
@@ -347,6 +376,7 @@ include 'includes/navbar.php';
         });
     }
 
+    // Function to get the active day and display it
     function getActiveDay(date) {
         const day = new Date(year, month, date);
         const dayName = day.toString().split(" ")[0];
@@ -354,8 +384,41 @@ include 'includes/navbar.php';
         document.querySelector(".event-date").innerHTML = date + " " + months[month] + " " + year;
     }
 
+    // Function to update events for the selected date
     function updateEvents(date) {
         fetchAppointments(`${year}-${month + 1}-${date}`);
+    }
+
+    // Function to fetch appointments for the current month
+    function fetchAppointmentsForMonth() {
+        const startDate = `${year}-${String(month + 1).padStart(2, '0')}-01`;
+        const endDate = `${year}-${String(month + 1).padStart(2, '0')}-${new Date(year, month + 1, 0).getDate()}`;
+
+        $.post("/AutoMobile Project/Employee/fetch_appointments.php", {
+            startDate,
+            endDate
+        }, function(response) {
+            const data = JSON.parse(response);
+            if (data.status === "success") {
+                const appointmentDates = data.appointments;
+                markAppointmentDays(appointmentDates);
+            }
+        });
+    }
+
+    // Function to mark days with appointments
+    function markAppointmentDays(appointmentDates) {
+        const days = document.querySelectorAll(".day");
+        days.forEach(day => {
+            const date = day.getAttribute("data-date");
+            if (appointmentDates.includes(date)) {
+                if (!day.querySelector('.appointment-dot')) {
+                    const dot = document.createElement('div');
+                    dot.className = 'appointment-dot';
+                    day.appendChild(dot);
+                }
+            }
+        });
     }
 </script>
 </body>
