@@ -44,7 +44,7 @@ $appId = isset($_GET['appId']) ? $_GET['appId'] : null;
                     <th></th>
                 </tr>
             </thead>
-            <tbody id="itemsTableBody" class="hidden">
+            <tbody id="itemsTableBody">
                 <!-- Rows will be added dynamically here -->
             </tbody>
         </table>
@@ -86,6 +86,45 @@ $appId = isset($_GET['appId']) ? $_GET['appId'] : null;
     let summaryItems = [];
     const appId = "<?php echo $appId; ?>";
 
+    // Fetch and render all items on page load
+    $(document).ready(function() {
+        fetchAllItems();
+    });
+
+    function fetchAllItems() {
+        $.post("/AutoMobile Project/Employee/billing_handler.php", {
+            action: "fetch_all_items"
+        }, function(response) {
+            const data = JSON.parse(response);
+            if (data.status === "success") {
+                renderItemsTable(data.data);
+            }
+        });
+    }
+
+    function renderItemsTable(items) {
+        let rows = "";
+        items.forEach((item, index) => {
+            rows += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.item_id}</td>
+                    <td>${item.item_name}</td>
+                    <td>
+                        <div class="qty-buttons">
+                            <button onclick="decrementQty(this)">-</button>
+                            <input type="number" value="1" min="1" onchange="updateQty(this)">
+                            <button onclick="incrementQty(this)">+</button>
+                        </div>
+                    </td>
+                    <td>Rs. ${item.unit_price}</td>
+                    <td class="bin"><i class="fa-regular fa-trash-can" style="color: #831100;" onclick="removeItem(this)"></i></td>
+                </tr>
+            `;
+        });
+        $("#itemsTableBody").html(rows);
+    }
+
     // Search for items
     $("#itemSearch").on("input", function() {
         const searchTerm = $(this).val();
@@ -96,15 +135,11 @@ $appId = isset($_GET['appId']) ? $_GET['appId'] : null;
             }, function(response) {
                 const data = JSON.parse(response);
                 if (data.status === "success") {
-                    let suggestions = "";
-                    data.data.forEach((item) => {
-                        suggestions += `<li onclick="selectItem(${item.item_id})">${item.item_name}</li>`;
-                    });
-                    $("#itemSuggestions").html(suggestions).show();
+                    renderItemsTable(data.data);
                 }
             });
         } else {
-            $("#itemSuggestions").hide();
+            fetchAllItems();
         }
     });
 
@@ -114,38 +149,6 @@ $appId = isset($_GET['appId']) ? $_GET['appId'] : null;
             $("#itemSuggestions").hide();
         }
     });
-
-    // Select item and add to items table
-    function selectItem(itemId) {
-        $.post("/AutoMobile Project/Employee/billing_handler.php", {
-            action: "get_item_details",
-            itemId
-        }, function(response) {
-            const data = JSON.parse(response);
-            if (data.status === "success") {
-                const item = data.data;
-                const newRow = `
-                    <tr>
-                        <td>${summaryItems.length + 1}</td>
-                        <td>${item.item_id}</td>
-                        <td>${item.item_name}</td>
-                        <td>
-                            <div class="qty-buttons">
-                                <button onclick="decrementQty(this)">-</button>
-                                <input type="number" value="1" min="1" onchange="updateQty(this)">
-                                <button onclick="incrementQty(this)">+</button>
-                            </div>
-                        </td>
-                        <td>Rs. ${item.unit_price}</td>
-                        <td class="bin"><i class="fa-regular fa-trash-can" style="color: #831100;" onclick="removeItem(this)"></i></td>
-                    </tr>
-                `;
-                $("#itemsTableBody").append(newRow).removeClass('hidden');
-                addToSummary(item.item_id, item.item_name, 1, item.unit_price);
-            }
-            $("#itemSuggestions").hide();
-        });
-    }
 
     // Increment quantity
     function incrementQty(button) {
