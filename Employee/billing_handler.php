@@ -3,7 +3,15 @@ include '../config/dbconnection.php';
 
 $action = $_POST['action'];
 
-if ($action == 'search_item') {
+if ($action == 'fetch_all_items') {
+    $query = "SELECT * FROM inventory";
+    $result = mysqli_query($conn, $query);
+    $items = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $items[] = $row;
+    }
+    echo json_encode(['status' => 'success', 'data' => $items]);
+} elseif ($action == 'search_item') {
     $searchTerm = $_POST['searchTerm'];
     $query = "SELECT * FROM inventory WHERE item_name LIKE '%$searchTerm%'";
     $result = mysqli_query($conn, $query);
@@ -12,12 +20,6 @@ if ($action == 'search_item') {
         $items[] = $row;
     }
     echo json_encode(['status' => 'success', 'data' => $items]);
-} elseif ($action == 'get_item_details') {
-    $itemId = $_POST['itemId'];
-    $query = "SELECT * FROM inventory WHERE item_id = $itemId";
-    $result = mysqli_query($conn, $query);
-    $item = mysqli_fetch_assoc($result);
-    echo json_encode(['status' => 'success', 'data' => $item]);
 } elseif ($action == 'checkout') {
     $appId = $_POST['appId'];
     $summaryItems = $_POST['summaryItems'];
