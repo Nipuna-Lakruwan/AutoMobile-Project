@@ -112,9 +112,9 @@ $appId = isset($_GET['appId']) ? $_GET['appId'] : null;
                     <td>${item.item_name}</td>
                     <td>
                         <div class="qty-buttons">
-                            <button onclick="decrementQty(this)">-</button>
-                            <input type="number" value="1" min="1" onchange="updateQty(this)">
-                            <button onclick="incrementQty(this)">+</button>
+                            <button onclick="decrementQty(this, ${item.quantity})">-</button>
+                            <input type="number" value="1" min="1" max="${item.quantity}" onchange="updateQty(this, ${item.quantity})">
+                            <button onclick="incrementQty(this, ${item.quantity})">+</button>
                         </div>
                     </td>
                     <td>Rs. ${item.unit_price}</td>
@@ -151,31 +151,40 @@ $appId = isset($_GET['appId']) ? $_GET['appId'] : null;
     });
 
     // Increment quantity
-    function incrementQty(button) {
+    function incrementQty(button, maxQty) {
         let input = button.previousElementSibling;
         let currentValue = parseInt(input.value);
-        input.value = currentValue + 1;
-        updateSummary(button, currentValue + 1);
+        if (currentValue < maxQty) {
+            input.value = currentValue + 1;
+            updateSummary(button, currentValue + 1);
+        } else {
+            alert(`Cannot add more than ${maxQty} items.`);
+        }
     }
 
     // Decrement quantity
-    function decrementQty(button) {
+    function decrementQty(button, maxQty) {
         let input = button.nextElementSibling;
         let currentValue = parseInt(input.value);
         if (currentValue > 1) {
             input.value = currentValue - 1;
             updateSummary(button, currentValue - 1);
         } else {
-            removeItem(button);
+            input.value = 1;
+            updateSummary(button, 1);
         }
     }
 
     // Update quantity
-    function updateQty(input) {
+    function updateQty(input, maxQty) {
         let newQty = parseInt(input.value);
         if (newQty < 1) {
             newQty = 1;
             input.value = 1;
+        } else if (newQty > maxQty) {
+            newQty = maxQty;
+            input.value = maxQty;
+            alert(`Cannot add more than ${maxQty} items.`);
         }
         updateSummary(input, newQty);
     }
@@ -210,8 +219,16 @@ $appId = isset($_GET['appId']) ? $_GET['appId'] : null;
     function updateSummary(element, newQty) {
         const row = $(element).closest("tr");
         const itemId = row.find("td:eq(1)").text();
-        const item = summaryItems.find(item => item.itemId == itemId);
-        item.qty = newQty;
+        const itemName = row.find("td:eq(2)").text();
+        const price = parseFloat(row.find("td:eq(4)").text().replace('Rs. ', ''));
+        const existingItem = summaryItems.find(item => item.itemId == itemId);
+
+        if (existingItem) {
+            existingItem.qty = newQty;
+        } else {
+            addToSummary(itemId, itemName, newQty, price);
+        }
+
         updateSummaryTable();
     }
 
@@ -221,9 +238,6 @@ $appId = isset($_GET['appId']) ? $_GET['appId'] : null;
         const itemId = row.find("td:eq(1)").text();
         summaryItems = summaryItems.filter(item => item.itemId != itemId);
         row.remove();
-        if (summaryItems.length === 0) {
-            $("#itemsTableBody").addClass('hidden');
-        }
         updateSummaryTable();
     }
 
